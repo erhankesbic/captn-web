@@ -1,6 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Captn – Landing Page
 
-## Getting Started
+Landing Page für die Fitness-App Captn (getcaptn.de / getcaptn.com). Next.js, TypeScript, Tailwind. Beta-Tester-Formular mit E-Mail-Versand an support@getcaptn.com.
+
+## Veröffentlichen
+
+**Anleitung:** Siehe [DEPLOY.md](DEPLOY.md) – Schritt für Schritt: GitHub, Vercel, IONOS-DNS.
+
+## Lokal starten
 
 First, run the development server:
 
