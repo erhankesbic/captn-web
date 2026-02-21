@@ -61,10 +61,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Beta email send failed:", err);
+    const details = err instanceof Error ? err.message : "Unbekannter Fehler";
     return NextResponse.json(
       {
         message:
           "Versand fehlgeschlagen. Bitte später erneut versuchen oder uns direkt unter support@getcaptn.com kontaktieren.",
+        details,
       },
       { status: 500 }
     );
