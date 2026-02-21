@@ -110,20 +110,20 @@ export default function Features() {
           </p>
           <h2
             id="features-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+            className="mt-3 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl md:text-6xl"
           >
             Alles, was du brauchst
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-xl text-[var(--muted)]">
+          <p className="mx-auto mt-6 max-w-2xl text-xl text-[var(--muted)] leading-relaxed">
             Dein All-in-One-Tracker für Training und Ernährung – mit KI-Coach.
           </p>
         </motion.div>
 
-        <div className="mt-20 space-y-20 sm:mt-28 sm:space-y-28">
+        <div className="mt-24 space-y-32 sm:mt-32 sm:space-y-40">
           {features.map((feature, i) => (
             <motion.div
               key={feature.id}
-              className="grid gap-10 md:grid-cols-2 md:items-center md:gap-16"
+              className="grid gap-12 md:grid-cols-2 md:items-center md:gap-20"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -131,12 +131,15 @@ export default function Features() {
             >
               {/* Screenshot */}
               <div
-                className={`flex justify-center ${i % 2 === 1 ? "md:order-2" : ""}`}
+                className={`flex justify-center relative ${i % 2 === 1 ? "md:order-2" : ""}`}
               >
-                <div className="phone-card relative">
+                {/* Decorative background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[var(--accent)]/20 to-purple-500/20 blur-3xl rounded-full -z-10 opacity-50"></div>
+                
+                <div className="phone-card relative group">
                   {/* Tag inside image area */}
                   <div className="absolute left-4 top-4 z-10">
-                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${feature.tagColor}`}>
+                    <span className={`rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-md border border-white/20 shadow-sm ${feature.tagColor}`}>
                       {feature.tag}
                     </span>
                   </div>
@@ -145,7 +148,7 @@ export default function Features() {
                     alt={`Captn App – ${feature.title}`}
                     width={300}
                     height={533}
-                    className="block h-auto w-[260px] rounded-2xl object-top sm:w-[300px]"
+                    className="block h-auto w-[260px] rounded-2xl object-top sm:w-[300px] transition-transform duration-700 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </div>
@@ -157,28 +160,28 @@ export default function Features() {
                   i % 2 === 1 ? "md:order-1" : ""
                 }`}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+                <p className="text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
                   {feature.subtitle}
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
+                <h3 className="mt-4 text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
                   {feature.title}
                 </h3>
-                <p className="mt-4 text-lg leading-relaxed text-[var(--muted)]">
+                <p className="mt-5 text-lg leading-relaxed text-[var(--muted)]">
                   {feature.description}
                 </p>
-                <ul className="mt-6 space-y-2.5">
+                <ul className="mt-8 space-y-4">
                   {feature.bullets.map((b) => (
                     <li
                       key={b}
-                      className="flex items-center gap-3 text-sm text-[var(--foreground)] md:justify-start justify-center"
+                      className="flex items-center gap-4 text-base font-medium text-[var(--foreground)] md:justify-start justify-center"
                     >
                       <span
-                        className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-white"
+                        className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-white shadow-md shadow-[var(--accent)]/30"
                         style={{ background: "var(--accent)" }}
                         aria-hidden="true"
                       >
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                          <path d="M2 5.5l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
+                          <path d="M2 5.5l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </span>
                       {b}

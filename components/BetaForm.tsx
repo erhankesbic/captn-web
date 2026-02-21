@@ -173,12 +173,12 @@ export default function BetaForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.55, delay: 0.1 }}
         >
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          <div className="premium-card p-8">
+            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div>
                 <label
                   htmlFor="beta-email"
-                  className="block text-sm font-medium text-[var(--foreground)]"
+                  className="block text-sm font-semibold text-[var(--foreground)]"
                 >
                   E-Mail-Adresse{" "}
                   <span className="text-red-500" aria-hidden="true">*</span>
@@ -199,7 +199,7 @@ export default function BetaForm() {
               <div>
                 <label
                   htmlFor="beta-why"
-                  className="block text-sm font-medium text-[var(--foreground)]"
+                  className="block text-sm font-semibold text-[var(--foreground)]"
                 >
                   Warum möchtest du Capt&apos;n testen?{" "}
                   <span className="text-[var(--muted)] font-normal">(optional)</span>
@@ -218,7 +218,7 @@ export default function BetaForm() {
               <div>
                 <label
                   htmlFor="beta-experience"
-                  className="block text-sm font-medium text-[var(--foreground)]"
+                  className="block text-sm font-semibold text-[var(--foreground)]"
                 >
                   Fitness & Ernährungs-Erfahrung{" "}
                   <span className="text-[var(--muted)] font-normal">(optional)</span>
@@ -241,15 +241,15 @@ export default function BetaForm() {
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   disabled={status === "loading"}
-                  className="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-[var(--border)] text-[var(--accent)] focus:ring-[var(--accent)]"
+                  className="mt-1 h-4 w-4 flex-shrink-0 rounded border-[var(--border)] text-[var(--accent)] focus:ring-[var(--accent)]"
                 />
-                <label htmlFor="beta-consent" className="text-sm text-[var(--muted)]">
+                <label htmlFor="beta-consent" className="text-sm text-[var(--muted)] leading-relaxed">
                   Ich habe die{" "}
                   <a
                     href="/datenschutz"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--accent)] underline underline-offset-2"
+                    className="text-[var(--accent)] font-medium hover:underline underline-offset-2"
                   >
                     Datenschutzerklärung
                   </a>{" "}
@@ -261,7 +261,7 @@ export default function BetaForm() {
               {errorMessage && (
                 <p
                   role="alert"
-                  className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400"
+                  className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700 dark:bg-red-900/20 dark:text-red-400"
                 >
                   {errorMessage}
                 </p>
@@ -270,17 +270,17 @@ export default function BetaForm() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full rounded-full bg-[var(--accent)] py-3.5 text-sm font-semibold text-white shadow-lg shadow-[var(--accent)]/25 transition-all hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 disabled:opacity-60 disabled:translate-y-0"
+                className="w-full rounded-full bg-gradient-to-r from-[var(--accent)] to-[#5856d6] py-4 text-base font-bold text-white shadow-xl shadow-[var(--accent)]/30 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--accent)]/40 disabled:opacity-60 disabled:scale-100"
               >
                 {status === "loading" ? "Wird gesendet …" : "Jetzt als Beta-Tester bewerben"}
               </button>
             </form>
           </div>
-          <p className="mt-3 text-center text-xs text-[var(--muted)]">
+          <p className="mt-4 text-center text-sm text-[var(--muted)]">
             Weitere Infos:{" "}
             <a
               href="/datenschutz"
-              className="text-[var(--accent)] underline underline-offset-2"
+              className="text-[var(--accent)] font-medium hover:underline underline-offset-2"
             >
               Datenschutzerklärung
             </a>

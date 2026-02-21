@@ -39,9 +39,54 @@ html {
 
 /* Glass morphism */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated Background Mesh */
+.bg-mesh {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(at 40% 20%, rgba(0, 113, 227, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(88, 86, 214, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(0, 113, 227, 0.1) 0px, transparent 50%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Premium Card */
+.premium-card {
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 24px -8px rgba(0, 0, 0, 0.05),
+    0 0 0 1px var(--border-light);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 
+    0 20px 40px -12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--border-light),
+    0 0 0 4px var(--accent-light);
 }
 
 /* iPhone-style device frame */
@@ -141,9 +186,32 @@ html {
   }
 
   .glass {
-    background: rgba(28, 28, 30, 0.88);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: rgba(28, 28, 30, 0.65);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .bg-mesh {
+    background-color: var(--background);
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(41, 151, 255, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(94, 92, 230, 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(41, 151, 255, 0.1) 0px, transparent 50%);
+  }
+
+  .premium-card {
+    background: var(--card);
+    box-shadow: 
+      0 4px 24px -8px rgba(0, 0, 0, 0.3),
+      0 0 0 1px var(--border-light);
+  }
+
+  .premium-card:hover {
+    box-shadow: 
+      0 20px 40px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px var(--border-light),
+      0 0 0 4px var(--accent-light);
   }
 
   .phone-card {

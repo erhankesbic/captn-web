@@ -7,78 +7,82 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-[var(--section)] px-6 pt-16 pb-0 sm:px-8 sm:pt-24"
+      className="relative overflow-hidden bg-mesh px-6 pt-20 pb-12 sm:px-8 sm:pt-32 sm:pb-20"
     >
-      {/* Subtle background gradient */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,113,227,0.08) 0%, transparent 70%)",
-        }}
-      />
-
-      <div className="mx-auto grid max-w-6xl items-end gap-12 md:grid-cols-2 md:gap-8">
+      <div className="mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-2 md:gap-12">
         {/* Left: Text */}
         <motion.div
-          className="pb-16 text-center md:text-left md:pb-24"
-          initial={{ opacity: 0, y: 28 }}
+          className="text-center md:text-left"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="badge-accent mb-5 inline-block">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-4 py-1.5 text-sm font-medium text-[var(--accent)] backdrop-blur-md"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
+            </span>
             Beta · Nur iOS · DACH
-          </span>
+          </motion.div>
 
           {/* App Icon */}
-          <div className="mb-6 flex justify-center md:justify-start">
-            <img
-              src="/logo/captndatalogo-iOS-Default-1024x1024@1x.png"
-              alt="Capt'n App Icon"
-              width={80}
-              height={80}
-              className="h-20 w-20 rounded-[1.25rem] shadow-lg shadow-black/10 dark:shadow-black/30"
-              loading="eager"
-              decoding="async"
-            />
+          <div className="mb-8 flex justify-center md:justify-start">
+            <div className="relative group">
+              <div className="absolute -inset-1 rounded-[1.5rem] bg-gradient-to-r from-[var(--accent)] to-[#5856d6] opacity-30 blur transition duration-500 group-hover:opacity-60"></div>
+              <img
+                src="/logo/captndatalogo-iOS-Default-1024x1024@1x.png"
+                alt="Capt'n App Icon"
+                width={88}
+                height={88}
+                className="relative h-22 w-22 rounded-[1.25rem] shadow-2xl shadow-black/20 ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </div>
 
-          <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight text-[var(--foreground)] sm:text-5xl md:text-[3.25rem] lg:text-6xl">
-            Dein KI-Personal&shy;trainer &amp; Ernährungs&shy;berater
+          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-[4rem] lg:text-[4.5rem]">
+            <span className="text-gradient">Dein KI-Personal&shy;trainer &amp;</span><br />
+            <span className="text-gradient-accent">Ernährungs&shy;berater</span>
           </h1>
 
-          <p className="mt-5 text-lg leading-relaxed text-[var(--muted)] sm:text-xl">
+          <p className="mt-6 text-lg leading-relaxed text-[var(--muted)] sm:text-xl max-w-xl mx-auto md:mx-0">
             Training und Ernährung intelligent verbunden – mit einem Plan, der
             sich dir anpasst. Alles in einer App.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center md:justify-start">
             <a
               href="#beta"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-[var(--accent)]/25 transition-all hover:bg-[var(--accent-hover)] hover:shadow-xl hover:shadow-[var(--accent)]/30 hover:-translate-y-0.5"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--foreground)] px-8 py-4 text-base font-semibold text-[var(--background)] transition-all hover:scale-105 hover:shadow-2xl hover:shadow-[var(--foreground)]/20"
             >
-              Als Beta-Tester bewerben
+              <span className="absolute inset-0 bg-gradient-to-r from-[var(--accent)] to-[#5856d6] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+              <span className="relative z-10">Als Beta-Tester bewerben</span>
             </a>
             <a
               href="#features"
-              className="inline-flex items-center justify-center rounded-full border border-[var(--border)] px-7 py-3.5 text-base font-medium text-[var(--foreground)] transition-all hover:bg-[var(--foreground)]/5 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center rounded-full border border-[var(--border)] bg-white/50 px-8 py-4 text-base font-medium text-[var(--foreground)] backdrop-blur-md transition-all hover:bg-[var(--foreground)]/5 hover:scale-105"
             >
               Features entdecken
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--muted)] md:justify-start">
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-[var(--muted)] md:justify-start">
+            <span className="flex items-center gap-2">
+              <svg className="h-5 w-5 text-[var(--success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               Kostenlos starten
             </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+            <span className="flex items-center gap-2">
+              <svg className="h-5 w-5 text-[var(--success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               Apple Health Sync
             </span>
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--success)]" />
+            <span className="flex items-center gap-2">
+              <svg className="h-5 w-5 text-[var(--success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               KI-Coach inklusive
             </span>
           </div>
@@ -86,18 +90,23 @@ export default function Hero() {
 
         {/* Right: App mockup */}
         <motion.div
-          className="flex justify-center md:justify-end"
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="flex justify-center md:justify-end relative"
+          initial={{ opacity: 0, y: 40, rotateX: 10 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          style={{ perspective: "1000px" }}
         >
-          <div className="relative">
+          <motion.div 
+            className="relative z-10"
+            animate={{ y: [-10, 10, -10] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+          >
             {/* Glow behind phone */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 scale-90 rounded-[3rem] opacity-40 blur-3xl"
+              className="absolute inset-0 scale-110 rounded-[3rem] opacity-50 blur-3xl"
               style={{
-                background: "linear-gradient(145deg, #0071e3 0%, #5856d6 100%)",
+                background: "linear-gradient(145deg, var(--accent) 0%, #5856d6 100%)",
               }}
             />
             <div className="device-frame relative">

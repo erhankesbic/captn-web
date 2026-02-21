@@ -38,22 +38,22 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          <p className="text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
             Stimmen
           </p>
           <h2
             id="testimonials-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+            className="mt-4 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl md:text-6xl"
           >
             Was Beta-Tester sagen
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-xl text-[var(--muted)]">
+          <p className="mx-auto mt-6 max-w-xl text-xl text-[var(--muted)] leading-relaxed">
             Bald teilen unsere ersten Tester ihre Erfahrungen. Sei dabei und
             schreib die erste Erfolgsgeschichte.
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-3">
           {placeholders.map((p, i) => (
             <motion.div
               key={p.name}
@@ -61,16 +61,16 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
+              className="premium-card p-8"
               aria-hidden="true"
             >
               {/* Stars */}
-              <div className="flex gap-0.5 text-amber-400">
+              <div className="flex gap-1 text-amber-400">
                 {[...Array(5)].map((_, j) => (
                   <svg
                     key={j}
-                    width="14"
-                    height="14"
+                    width="16"
+                    height="16"
                     viewBox="0 0 14 14"
                     fill="currentColor"
                     aria-hidden="true"
@@ -79,24 +79,24 @@ export default function Testimonials() {
                   </svg>
                 ))}
               </div>
-              <p className="mt-4 text-sm italic leading-relaxed text-[var(--muted)]">
+              <p className="mt-6 text-base italic leading-relaxed text-[var(--muted)]">
                 &ldquo;{p.text}&rdquo;
               </p>
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-8 flex items-center gap-4">
                 <div
-                  className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white"
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white shadow-md"
                   style={{
                     background:
-                      "linear-gradient(135deg, #0071e3 0%, #5856d6 100%)",
+                      "linear-gradient(135deg, var(--accent) 0%, #5856d6 100%)",
                   }}
                 >
                   {p.initials}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[var(--foreground)]">
+                  <p className="text-base font-bold text-[var(--foreground)]">
                     {p.name}
                   </p>
-                  <p className="text-xs text-[var(--muted)]">{p.role}</p>
+                  <p className="text-sm font-medium text-[var(--muted)]">{p.role}</p>
                 </div>
               </div>
             </motion.div>

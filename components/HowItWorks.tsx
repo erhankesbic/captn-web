@@ -51,7 +51,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="bg-[var(--section-alt)] px-6 py-20 sm:px-8 sm:py-28"
+      className="bg-[var(--section-alt)] px-6 py-24 sm:px-8 sm:py-32"
       aria-labelledby="how-heading"
     >
       <div className="mx-auto max-w-6xl">
@@ -62,21 +62,24 @@ export default function HowItWorks() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          <p className="text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
             So funktioniert's
           </p>
           <h2
             id="how-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+            className="mt-4 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl md:text-6xl"
           >
             In 4 Schritten zum Ziel
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-xl text-[var(--muted)]">
+          <p className="mx-auto mt-6 max-w-2xl text-xl text-[var(--muted)] leading-relaxed">
             Fang da an, wo du stehst – und bleib am Ball.
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-8 sm:mt-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-24 grid gap-12 sm:mt-32 md:grid-cols-2 lg:grid-cols-4 relative">
+          {/* Background connecting line for desktop */}
+          <div className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-transparent via-[var(--border)] to-transparent -z-10"></div>
+
           {steps.map((s, i) => (
             <motion.article
               key={s.step}
@@ -85,44 +88,35 @@ export default function HowItWorks() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
-              className="group flex flex-col"
+              className="group flex flex-col relative"
             >
               {/* Step number + connector */}
-              <div className="mb-5 flex items-center gap-3">
+              <div className="mb-8 flex items-center justify-center lg:justify-start gap-4">
                 <div
-                  className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${s.color} text-sm font-bold text-white shadow-md`}
+                  className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${s.color} text-xl font-bold text-white shadow-xl shadow-${s.color.split('-')[1]}/30 ring-4 ring-[var(--background)] z-10 transition-transform duration-300 group-hover:scale-110`}
                 >
                   {s.step}
                 </div>
-                {i < steps.length - 1 && (
-                  <div
-                    aria-hidden="true"
-                    className="hidden h-px flex-1 lg:block"
-                    style={{
-                      background: "linear-gradient(to right, var(--border), transparent)",
-                    }}
-                  />
-                )}
               </div>
 
               {/* Screenshot */}
-              <div className="phone-card overflow-hidden">
+              <div className="phone-card overflow-hidden premium-card p-2 bg-white/50 backdrop-blur-sm">
                 <img
                   src={previewPath(SCREENS[s.screenId])}
                   alt={`Schritt ${s.step}: ${s.title}`}
                   width={220}
                   height={391}
-                  className="block h-auto w-full object-top"
+                  className="block h-auto w-full object-top rounded-xl transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
               </div>
 
               {/* Text */}
-              <div className="mt-5 flex flex-col">
-                <h3 className="text-base font-semibold text-[var(--foreground)]">
+              <div className="mt-8 flex flex-col text-center lg:text-left">
+                <h3 className="text-2xl font-bold text-[var(--foreground)]">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                <p className="mt-3 text-base leading-relaxed text-[var(--muted)]">
                   {s.description}
                 </p>
               </div>

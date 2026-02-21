@@ -84,18 +84,21 @@ export default function Vorteile() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
-              className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 transition-shadow hover:shadow-lg hover:shadow-black/5"
+              className="premium-card group relative overflow-hidden p-8"
             >
+              {/* Subtle background glow on hover */}
+              <div className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br ${v.color} opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20`}></div>
+              
               {/* Icon */}
               <div
-                className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${v.color} text-white shadow-lg`}
+                className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${v.color} text-white shadow-lg shadow-${v.color.split('-')[1]}/30 ring-1 ring-white/20`}
               >
                 {v.icon}
               </div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)]">
+              <h3 className="text-xl font-semibold text-[var(--foreground)]">
                 {v.title}
               </h3>
-              <p className="mt-3 text-[var(--muted)] leading-relaxed">
+              <p className="mt-4 text-[var(--muted)] leading-relaxed">
                 {v.text}
               </p>
 

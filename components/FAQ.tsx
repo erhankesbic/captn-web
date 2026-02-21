@@ -45,43 +45,43 @@ export default function FAQ() {
     >
       <div className="mx-auto max-w-3xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          <p className="text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
             FAQ
           </p>
           <h2
             id="faq-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+            className="mt-4 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl md:text-6xl"
           >
             Häufige Fragen
           </h2>
-          <p className="mt-4 text-xl text-[var(--muted)]">
+          <p className="mt-6 text-xl text-[var(--muted)] leading-relaxed">
             Du hast Fragen? Wir haben Antworten.
           </p>
         </div>
 
-        <ul className="mt-12 space-y-2.5" role="list">
+        <ul className="mt-16 space-y-4" role="list">
           {items.map((item, i) => (
             <li
               key={i}
-              className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)]"
+              className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm transition-all hover:shadow-md"
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--foreground)]/3"
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--foreground)]/5"
                 aria-expanded={openIndex === i}
                 aria-controls={`faq-answer-${i}`}
                 id={`faq-question-${i}`}
               >
                 <span>{item.q}</span>
                 <span
-                  className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] transition-transform ${
-                    openIndex === i ? "rotate-45 border-[var(--accent)] text-[var(--accent)]" : ""
+                  className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] transition-all duration-300 ${
+                    openIndex === i ? "rotate-45 border-[var(--accent)] bg-[var(--accent)] text-white" : ""
                   }`}
                   aria-hidden="true"
                 >
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
+                    <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 </span>
               </button>
@@ -96,8 +96,18 @@ export default function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 pt-2 text-base leading-relaxed text-[var(--muted)]">
+                      {item.a}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+          ))}
+        </ul>
                   >
                     <p className="border-t border-[var(--border)] px-5 py-4 text-sm leading-relaxed text-[var(--muted)]">
                       {item.a}
