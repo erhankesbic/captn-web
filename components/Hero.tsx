@@ -122,7 +122,7 @@ export default function Hero() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 

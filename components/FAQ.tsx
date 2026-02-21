@@ -108,16 +108,6 @@ export default function FAQ() {
             </li>
           ))}
         </ul>
-                  >
-                    <p className="border-t border-[var(--border)] px-5 py-4 text-sm leading-relaxed text-[var(--muted)]">
-                      {item.a}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </li>
-          ))}
-        </ul>
       </div>
     </motion.section>
   );
