@@ -1,6 +1,6 @@
-# Captn – Landing Page
+# Capt'n – Landing Page
 
-Landing Page für die Fitness-App Captn (getcaptn.de / getcaptn.com). Next.js, TypeScript, Tailwind. Beta-Tester-Formular mit E-Mail-Versand an support@getcaptn.com.
+Landing Page für die Fitness-App Capt'n (getcaptn.de / getcaptn.com). Next.js, TypeScript, Tailwind. Beta-Tester-Formular mit E-Mail-Versand an support@getcaptn.com.
 
 ## Veröffentlichen
 

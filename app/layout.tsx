@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CookieBanner from "@/components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Captn – Dein KI-Personal-Trainer & Ernährungsberater",
+  title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
   description:
     "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach. Jetzt als Beta-Tester bewerben.",
   keywords: [
@@ -26,10 +27,15 @@ export const metadata: Metadata = {
     "iOS",
     "DACH",
   ],
+  icons: {
+    icon: "/logo/captndatalogo-iOS-Default-1024x1024@1x.png",
+    apple: "/logo/captndatalogo-iOS-Default-1024x1024@1x.png",
+  },
   openGraph: {
-    title: "Captn – Dein KI-Personal-Trainer & Ernährungsberater",
+    title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
     description:
       "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach.",
+    images: ["/logo/captndatalogo-iOS-Default-1024x1024@1x.png"],
   },
 };
 
@@ -44,6 +50,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

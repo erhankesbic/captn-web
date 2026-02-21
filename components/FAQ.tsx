@@ -1,23 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
   {
-    q: "Was ist Captn?",
-    a: "Captn ist eine iOS-App, die KI als Personal Trainer und Ernährungsberater nutzt. Du bekommst personalisierte Trainingspläne, kannst Mahlzeiten per Foto analysieren lassen und einem KI-Coach Fragen zu Fitness und Ernährung stellen. Alles in einer App, auf Deutsch.",
+    q: "Was ist Capt'n?",
+    a: "Capt'n ist eine iOS-App, die KI als Personal Trainer und Ernährungsberater nutzt. Du bekommst personalisierte Trainingspläne, kannst Mahlzeiten per Foto analysieren lassen und einem KI-Coach Fragen zu Fitness und Ernährung stellen. Alles in einer App, auf Deutsch.",
   },
   {
-    q: "Für welche Geräte ist Captn verfügbar?",
+    q: "Für welche Geräte ist Capt'n verfügbar?",
     a: "Aktuell nur für iPhone und iPad (iOS). Die App ist in der Beta-Phase und noch nicht im App Store – du kannst dich über diese Seite als Beta-Tester bewerben.",
   },
   {
-    q: "Was kostet Captn?",
+    q: "Was kostet Capt'n?",
     a: "Es gibt eine kostenlose Stufe (Free) und zwei Bezahlstufen: Basic (4,99 €/Monat oder 44,99 €/Jahr) und Premium (7,99 €/Monat oder 69,99 €/Jahr). Mit dem Jahresabo sparst du deutlich. Details findest du in der Preistabelle oben.",
   },
   {
     q: "Wie läuft die Beta ab?",
-    a: "Du bewirbst dich über das Formular. Wir melden uns per E-Mail und geben dir Zugang zur Beta. Dein Feedback hilft uns, Captn vor dem App-Store-Start zu verbessern.",
+    a: "Du bewirbst dich über das Formular. Wir melden uns per E-Mail und geben dir Zugang zur Beta. Dein Feedback hilft uns, Capt'n vor dem App-Store-Start zu verbessern.",
   },
   {
     q: "Werden meine Daten sicher behandelt?",
@@ -25,7 +26,7 @@ const items = [
   },
   {
     q: "Brauche ich einen Browser für die App?",
-    a: "Nein. Captn ist eine native iOS-App mit Anmeldung in der App – keine Browser-Weiterleitung nötig.",
+    a: "Nein. Capt'n ist eine native iOS-App mit Anmeldung direkt in der App – keine Browser-Weiterleitung nötig.",
   },
 ];
 
@@ -33,61 +34,81 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section
+    <motion.section
       id="faq"
-      className="border-t border-[var(--border)] px-4 py-16 sm:px-6 sm:py-20"
+      className="bg-[var(--section-alt)] px-6 py-20 sm:px-8 sm:py-28"
       aria-labelledby="faq-heading"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5 }}
     >
       <div className="mx-auto max-w-3xl">
-        <h2
-          id="faq-heading"
-          className="text-center text-3xl font-bold text-[var(--foreground)] sm:text-4xl"
-        >
-          Häufige Fragen
-        </h2>
-        <p className="mt-4 text-center text-[var(--muted)]">
-          Kurze Antworten auf die wichtigsten Fragen.
-        </p>
-        <ul className="mt-12 space-y-2">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+            FAQ
+          </p>
+          <h2
+            id="faq-heading"
+            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+          >
+            Häufige Fragen
+          </h2>
+          <p className="mt-4 text-xl text-[var(--muted)]">
+            Du hast Fragen? Wir haben Antworten.
+          </p>
+        </div>
+
+        <ul className="mt-12 space-y-2.5" role="list">
           {items.map((item, i) => (
             <li
               key={i}
-              className="rounded-xl border border-[var(--border)] bg-[var(--card)]"
+              className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)]"
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between px-4 py-4 text-left text-sm font-medium text-[var(--foreground)]"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-[var(--foreground)] transition-colors hover:bg-[var(--foreground)]/3"
                 aria-expanded={openIndex === i}
                 aria-controls={`faq-answer-${i}`}
                 id={`faq-question-${i}`}
               >
-                {item.q}
+                <span>{item.q}</span>
                 <span
-                  className={`ml-2 text-[var(--muted)] transition-transform ${
-                    openIndex === i ? "rotate-180" : ""
+                  className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] transition-transform ${
+                    openIndex === i ? "rotate-45 border-[var(--accent)] text-[var(--accent)]" : ""
                   }`}
-                  aria-hidden
+                  aria-hidden="true"
                 >
-                  ▼
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                    <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
                 </span>
               </button>
-              <div
-                id={`faq-answer-${i}`}
-                role="region"
-                aria-labelledby={`faq-question-${i}`}
-                className={`overflow-hidden border-t border-[var(--border)] ${
-                  openIndex === i ? "block" : "hidden"
-                }`}
-              >
-                <p className="px-4 py-3 text-sm text-[var(--muted)]">
-                  {item.a}
-                </p>
-              </div>
+
+              <AnimatePresence initial={false}>
+                {openIndex === i && (
+                  <motion.div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${i}`}
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="overflow-hidden"
+                  >
+                    <p className="border-t border-[var(--border)] px-5 py-4 text-sm leading-relaxed text-[var(--muted)]">
+                      {item.a}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </li>
           ))}
         </ul>
       </div>
-    </section>
+    </motion.section>
   );
 }

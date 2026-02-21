@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const FROM =
-  process.env.RESEND_FROM || "Captn Beta <onboarding@resend.dev>";
+  process.env.RESEND_FROM || "Capt'n Beta <onboarding@resend.dev>";
 const TO = "support@getcaptn.com";
 
 export type BetaPayload = {
@@ -22,7 +22,7 @@ export async function sendBetaApplicationEmail(payload: BetaPayload) {
   const text = [
     `E-Mail: ${email}`,
     "",
-    "Warum Captn testen?",
+    "Warum Capt'n testen?",
     why || "(nicht ausgefüllt)",
     "",
     "Erfahrung Fitness & Ernährung:",

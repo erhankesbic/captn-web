@@ -1,12 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
-  --muted: #737373;
-  --accent: #0a84ff;
+  --background: #f2f2f7;
+  --foreground: #1d1d1f;
+  --muted: #6e6e73;
+  --muted-light: #aeaeb2;
+  --accent: #0071e3;
+  --accent-hover: #0064cc;
+  --accent-light: rgba(0, 113, 227, 0.1);
   --card: #ffffff;
-  --border: #e5e5e5;
+  --card-hover: #fafafa;
+  --border: #d2d2d7;
+  --border-light: rgba(210, 210, 215, 0.5);
+  --section: #ffffff;
+  --section-alt: #f2f2f7;
+  --gradient-start: #667eea;
+  --gradient-end: #764ba2;
+  --success: #34c759;
 }
 
 @theme inline {
@@ -19,29 +29,134 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scroll for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
-/* Subtle glass-style surfaces */
+/* Glass morphism */
 .glass {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* iPhone-style device frame */
+.device-frame {
+  border-radius: 3rem;
+  padding: 0.75rem;
+  background: linear-gradient(145deg, #3a3a3c 0%, #1c1c1e 100%);
+  box-shadow:
+    0 40px 80px -16px rgba(0, 0, 0, 0.35),
+    0 16px 32px -8px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 0 0.5px rgba(0, 0, 0, 0.4);
+}
+
+.device-frame-inner {
+  border-radius: 2.25rem;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Phone card frame (für Features/HowItWorks) */
+.phone-card {
+  border-radius: 2rem;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow:
+    0 20px 60px -12px rgba(0, 0, 0, 0.15),
+    0 8px 24px -4px rgba(0, 0, 0, 0.08),
+    0 0 0 1px var(--border-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phone-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 32px 80px -12px rgba(0, 0, 0, 0.2),
+    0 12px 32px -4px rgba(0, 0, 0, 0.12),
+    0 0 0 1px var(--border-light);
+}
+
+/* Gradient badge */
+.badge-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+  color: white;
+  border-radius: 99px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+/* Step connector line */
+.step-connector {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+/* Scroll snap gallery */
+.snap-gallery {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-gallery > * {
+  scroll-snap-align: center;
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #a3a3a3;
-    --card: #141414;
-    --border: #262626;
+    --background: #000000;
+    --foreground: #f5f5f7;
+    --muted: #a1a1a6;
+    --muted-light: #636366;
+    --accent: #2997ff;
+    --accent-hover: #419cff;
+    --accent-light: rgba(41, 151, 255, 0.12);
+    --card: #1c1c1e;
+    --card-hover: #2c2c2e;
+    --border: #38383a;
+    --border-light: rgba(56, 56, 58, 0.6);
+    --section: #1c1c1e;
+    --section-alt: #000000;
+    --success: #30d158;
   }
+
   .glass {
-    background: rgba(20, 20, 20, 0.72);
+    background: rgba(28, 28, 30, 0.88);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
+
+  .phone-card {
+    box-shadow:
+      0 20px 60px -12px rgba(0, 0, 0, 0.5),
+      0 8px 24px -4px rgba(0, 0, 0, 0.3),
+      0 0 0 1px var(--border-light);
+  }
+
+  .phone-card:hover {
+    box-shadow:
+      0 32px 80px -12px rgba(0, 0, 0, 0.6),
+      0 12px 32px -4px rgba(0, 0, 0, 0.4),
+      0 0 0 1px var(--border-light);
   }
 }
