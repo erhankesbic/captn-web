@@ -4,6 +4,20 @@ const FROM =
   process.env.RESEND_FROM || "Capt'n Beta <onboarding@resend.dev>";
 const TO = "support@getcaptn.com";
 
+function firstNonEmptyEnv(keys: string[]) {
+  for (const key of keys) {
+    const value = process.env[key];
+    if (typeof value === "string" && value.trim().length > 0) {
+      return value.trim();
+    }
+  }
+  return undefined;
+}
+
+export function getResendApiKey() {
+  return firstNonEmptyEnv(["RESEND_API_KEY", "RESEND_APIKEY", "RESEND_KEY"]);
+}
+
 export type BetaPayload = {
   email: string;
   why: string;
@@ -11,7 +25,7 @@ export type BetaPayload = {
 };
 
 export async function sendBetaApplicationEmail(payload: BetaPayload) {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = getResendApiKey();
   if (!apiKey) {
     throw new Error("RESEND_API_KEY is not set");
   }

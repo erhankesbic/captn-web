@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendBetaApplicationEmail } from "@/lib/email";
+import { getResendApiKey, sendBetaApplicationEmail } from "@/lib/email";
 
 function isValidEmail(value: unknown): value is string {
   if (typeof value !== "string") return false;
@@ -10,8 +10,10 @@ function isValidEmail(value: unknown): value is string {
 }
 
 export async function POST(request: Request) {
-  if (!process.env.RESEND_API_KEY) {
-    console.error("RESEND_API_KEY is not set");
+  if (!getResendApiKey()) {
+    console.error(
+      "Resend API key is not set (expected one of: RESEND_API_KEY, RESEND_APIKEY, RESEND_KEY)"
+    );
     return NextResponse.json(
       { message: "E-Mail-Versand ist derzeit nicht konfiguriert." },
       { status: 503 }
