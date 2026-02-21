@@ -15,7 +15,13 @@ function firstNonEmptyEnv(keys: string[]) {
 }
 
 export function getResendApiKey() {
-  return firstNonEmptyEnv(["RESEND_API_KEY", "RESEND_APIKEY", "RESEND_KEY"]);
+  return firstNonEmptyEnv([
+    "RESEND_API_KEY",
+    "RESEND_APIKEY",
+    "RESEND_KEY",
+    "RESEND",
+    "resend",
+  ]);
 }
 
 export type BetaPayload = {
