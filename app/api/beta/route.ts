@@ -65,7 +65,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         message:
-          "Versand fehlgeschlagen. Bitte später erneut versuchen oder uns direkt unter support@getcaptn.com kontaktieren.",
+          "Versand fehlgeschlagen. Bitte später erneut versuchen oder uns direkt unter support@getcaptn.de kontaktieren.",
         details,
       },
       { status: 500 }

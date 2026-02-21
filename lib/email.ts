@@ -2,7 +2,7 @@ import { Resend } from "resend";
 
 const FROM =
   process.env.RESEND_FROM || "Capt'n Beta <noreply@getcaptn.de>";
-const TO = process.env.RESEND_TO || "support@getcaptn.com";
+const TO = process.env.RESEND_TO || "support@getcaptn.de";
 
 function firstNonEmptyEnv(keys: string[]) {
   for (const key of keys) {
