@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import { GALLERY_SCREENS, previewPath } from "@/content/screens";
 
-const labels: Record<number, string> = {
-  11: "Stats & Analyse",
-  12: "Workout-Tracking",
-  13: "Mahlzeiten",
-  14: "Coach-Chat",
+const labels: Record<string, string> = {
+  "dashboard.svg": "Dashboard",
+  "workoutplan.svg": "Workoutplan",
+  "ernnährungs_tab_mit_heutigen_mahlzeite_kalorien_makros.svg": "Ernährung & Makros",
+  "ki_kalorienrechner.svg": "KI Kalorienrechner",
+  "workout_abgeschlossen_zusammenfassung.svg": "Workout abgeschlossen",
+  "user_profil_view.svg": "Mein Profil",
 };
 
 export default function AppPreviews() {
@@ -52,25 +54,25 @@ export default function AppPreviews() {
           <div className="hidden md:block absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[var(--section)] to-transparent z-10 pointer-events-none"></div>
 
           <div className="flex snap-gallery no-scrollbar overflow-x-auto gap-8 px-6 pb-12 sm:gap-12 sm:px-8 pt-8">
-            {GALLERY_SCREENS.map((num) => (
+            {GALLERY_SCREENS.map((file) => (
               <div
-                key={num}
+                key={file}
                 className="flex-shrink-0 flex flex-col items-center group"
                 style={{ scrollSnapAlign: "center" }}
               >
                 <div className="phone-card premium-card p-2 bg-white/50 backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl group-hover:shadow-[var(--accent)]/20">
                   <img
-                    src={previewPath(num)}
-                    alt={labels[num] ?? `App Screen ${num}`}
+                    src={previewPath(file)}
+                    alt={labels[file] ?? `App Screen`}
                     width={240}
                     height={427}
                     className="block h-auto w-[220px] rounded-xl object-top sm:w-[280px] transition-transform duration-700 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </div>
-                {labels[num] && (
+                {labels[file] && (
                   <p className="mt-6 text-base font-semibold text-[var(--foreground)] transition-colors group-hover:text-[var(--accent)]">
-                    {labels[num]}
+                    {labels[file]}
                   </p>
                 )}
               </div>

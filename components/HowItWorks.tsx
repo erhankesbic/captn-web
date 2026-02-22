@@ -11,6 +11,7 @@ const steps = [
       "Ziele, Fitnesslevel, Equipment und Gewohnheiten angeben – dein Coach wird darauf abgestimmt.",
     screenId: "step1" as const,
     color: "from-blue-500 to-indigo-600",
+    shadowColor: "shadow-blue-500/30",
   },
   {
     step: "02",
@@ -19,6 +20,7 @@ const steps = [
       "Trainingspläne nutzen oder selbst erstellen. Mahlzeiten scannen oder eintragen. Alles an einem Ort.",
     screenId: "step2" as const,
     color: "from-violet-500 to-purple-600",
+    shadowColor: "shadow-violet-500/30",
   },
   {
     step: "03",
@@ -27,6 +29,7 @@ const steps = [
       "Fragen zu Technik, Ernährung oder Planung stellen. Tägliche Tipps und bei Premium eine Fortschrittsanalyse.",
     screenId: "step3" as const,
     color: "from-emerald-500 to-teal-600",
+    shadowColor: "shadow-emerald-500/30",
   },
   {
     step: "04",
@@ -35,6 +38,7 @@ const steps = [
       "Dashboard, wöchentliche Stats und Apple Health Sync. Jede Mahlzeit und jedes Workout analysiert und optimiert.",
     screenId: "step4" as const,
     color: "from-orange-500 to-amber-600",
+    shadowColor: "shadow-orange-500/30",
   },
 ];
 
@@ -51,7 +55,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="bg-[var(--section-alt)] px-6 py-24 sm:px-8 sm:py-32"
+      className="bg-[var(--section-alt)] px-6 py-20 sm:px-8 sm:py-28"
       aria-labelledby="how-heading"
     >
       <div className="mx-auto max-w-6xl">
@@ -93,7 +97,7 @@ export default function HowItWorks() {
               {/* Step number + connector */}
               <div className="mb-8 flex items-center justify-center lg:justify-start gap-4">
                 <div
-                  className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${s.color} text-xl font-bold text-white shadow-xl shadow-${s.color.split('-')[1]}/30 ring-4 ring-[var(--background)] z-10 transition-transform duration-300 group-hover:scale-110`}
+                  className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${s.color} text-xl font-bold text-white shadow-xl ${s.shadowColor} ring-4 ring-[var(--background)] z-10 transition-transform duration-300 group-hover:scale-110`}
                 >
                   {s.step}
                 </div>
@@ -123,6 +127,25 @@ export default function HowItWorks() {
             </motion.article>
           ))}
         </div>
+
+        {/* Mid-page CTA */}
+        <motion.div
+          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <a
+            href="#beta"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--foreground)] px-8 py-4 text-base font-semibold text-[var(--background)] transition-all hover:scale-105 hover:shadow-xl hover:shadow-[var(--foreground)]/20"
+          >
+            Jetzt als Beta-Tester bewerben
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

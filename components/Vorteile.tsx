@@ -12,6 +12,7 @@ const vorteile = [
       </svg>
     ),
     color: "from-blue-500 to-indigo-600",
+    shadowColor: "shadow-blue-500/30",
     title: "Kein Planungsstress mehr",
     text: "KI erstellt deinen Trainings- und Ernährungsplan – angepasst an deine Ziele und deinen Alltag. Du bleibst dran, ohne stundenlang zu planen.",
   },
@@ -24,6 +25,7 @@ const vorteile = [
       </svg>
     ),
     color: "from-violet-500 to-purple-600",
+    shadowColor: "shadow-violet-500/30",
     title: "Alles in einer App",
     text: "Training, Mahlzeiten-Tracking, Food Scan und KI-Coach an einem Ort. Kein Hin und Her zwischen mehreren Apps.",
   },
@@ -35,6 +37,7 @@ const vorteile = [
       </svg>
     ),
     color: "from-emerald-500 to-teal-600",
+    shadowColor: "shadow-emerald-500/30",
     title: "Passt sich dir an",
     text: "Dynamische Kalorienziele, personalisierte Tipps und Pläne, die mit deinem Fortschritt mitwachsen. Echter Coach, keine starren Templates.",
   },
@@ -53,7 +56,7 @@ export default function Vorteile() {
   return (
     <section
       id="vorteile"
-      className="bg-[var(--section-alt)] px-6 py-16 sm:px-8 sm:py-24"
+      className="bg-[var(--section-alt)] px-6 py-20 sm:px-8 sm:py-28"
       aria-labelledby="vorteile-heading"
     >
       <div className="mx-auto max-w-6xl">
@@ -64,15 +67,18 @@ export default function Vorteile() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          <p className="text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
             Warum Captn?
           </p>
           <h2
             id="vorteile-heading"
-            className="mt-3 text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl"
+            className="mt-3 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl"
           >
             Vorteile auf einen Blick
           </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-xl text-[var(--muted)] leading-relaxed">
+            Drei gute Gründe, mit Captn zu starten.
+          </p>
         </motion.div>
 
         <div className="mt-12 grid gap-6 sm:mt-16 md:grid-cols-3">
@@ -91,7 +97,7 @@ export default function Vorteile() {
               
               {/* Icon */}
               <div
-                className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${v.color} text-white shadow-lg shadow-${v.color.split('-')[1]}/30 ring-1 ring-white/20`}
+                className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${v.color} text-white shadow-lg ${v.shadowColor} ring-1 ring-white/20`}
               >
                 {v.icon}
               </div>
@@ -113,6 +119,25 @@ export default function Vorteile() {
             </motion.article>
           ))}
         </div>
+
+        {/* Mid-page CTA */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <a
+            href="#beta"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--foreground)] px-8 py-4 text-base font-semibold text-[var(--background)] transition-all hover:scale-105 hover:shadow-xl hover:shadow-[var(--foreground)]/20"
+          >
+            Jetzt als Beta-Tester bewerben
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

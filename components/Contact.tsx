@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Contact() {
   return (
     <footer
@@ -10,13 +12,13 @@ export default function Contact() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="/logo/captndatalogo-iOS-Default-1024x1024@1x.png"
                 alt=""
                 width={48}
                 height={48}
                 className="h-12 w-12 rounded-xl shadow-lg shadow-black/50"
-                aria-hidden="true"
+                aria-hidden={true}
               />
               <span className="text-2xl font-bold text-white tracking-tight">Capt&apos;n</span>
             </div>

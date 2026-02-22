@@ -192,6 +192,25 @@ export default function Features() {
             </motion.div>
           ))}
         </div>
+
+        {/* Mid-page CTA */}
+        <motion.div
+          className="mt-24 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <a
+            href="#beta"
+            className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[var(--accent)] to-[#5856d6] px-8 py-4 text-base font-semibold text-white shadow-xl shadow-[var(--accent)]/25 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-[var(--accent)]/35"
+          >
+            Jetzt als Beta-Tester bewerben
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

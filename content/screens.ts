@@ -1,35 +1,40 @@
 /**
- * Zuordnung: Welcher Screenshot (1–14) zeigt welchen App-Bereich?
- * Die SVGs sind in public/captn-previews/1.svg … 14.svg.
- *
- * Anpassen: Öffne jede SVG im Browser und trage die passende Nummer ein.
+ * Zuordnung: Welcher SVG-Screen zeigt welchen App-Bereich?
+ * Die SVGs liegen in public/captn-previews/ mit ihren beschreibenden Dateinamen.
  */
 export const SCREENS = {
-  /** Start/Dashboard (Tagesübersicht, nächste Session, Quick Actions) */
-  dashboard: 1,
-  /** Training (Pläne, Kalender, Workout) */
-  training: 2,
-  /** Ernährung / Food Scan / Mahlzeiten */
-  nutrition: 3,
-  /** KI-Chat / Coach */
-  chat: 4,
-  /** Profil / Onboarding / Einstellungen */
-  profile: 5,
-  /** Weiterer Screen (z.B. Statistiken) */
-  stats: 6,
-  /** How it Works – Schritt 1: Profil erstellen */
-  step1: 7,
-  /** How it Works – Schritt 2: Tracking starten */
-  step2: 8,
-  /** How it Works – Schritt 3: Coach nutzen */
-  step3: 9,
-  /** How it Works – Schritt 4: Ergebnisse sehen */
-  step4: 10,
+  /** Start/Dashboard – Tagesübersicht, Quick Actions */
+  dashboard: "dashboard.svg",
+  /** Training – KI-generierter Fitnessplan */
+  training: "ki_fitnessplan.svg",
+  /** Ernährung – Food Scan Ergebnis mit KI-Analyse */
+  nutrition: "ki_food_scan_durchgeführt_essen_wurde_analysiert.svg",
+  /** KI-Coach – Workout Fokus per Chat ändern */
+  chat: "ki_fitness_coach_workout_fokus_ändern.svg",
+  /** Profil / Onboarding – Ziele auswählen */
+  profile: "onboarding__ziele_auswählen.svg",
+  /** Fortschritt & Statistiken – KI Analyse */
+  stats: "ki_fortschritt_analyse.svg",
+  /** How it Works – Schritt 1: Profil erstellen (Fitnesslevel auswählen) */
+  step1: "onboarding_fitnesslevelauswählen.svg",
+  /** How it Works – Schritt 2: Tracking starten (Food Scan aktiv) */
+  step2: "ki_food_scan.svg",
+  /** How it Works – Schritt 3: Coach nutzen (KI-Chat: Was darf ich heute essen?) */
+  step3: "ki_ernährungs_chat_kann_ich_mir_heute_erlauben_das_noch_zuessen.svg",
+  /** How it Works – Schritt 4: Ergebnisse sehen (KI Fortschritt-Analyse) */
+  step4: "ki_fortschritt_analyse.svg",
 } as const;
 
-/** Galerie: weitere App-Screens für die Preview-Sektion */
-export const GALLERY_SCREENS = [11, 12, 13, 14];
+/** Galerie: diverse App-Screens für die Preview-Sektion */
+export const GALLERY_SCREENS = [
+  "dashboard.svg",
+  "workoutplan.svg",
+  "ernnährungs_tab_mit_heutigen_mahlzeite_kalorien_makros.svg",
+  "ki_kalorienrechner.svg",
+  "workout_abgeschlossen_zusammenfassung.svg",
+  "user_profil_view.svg",
+];
 
-export function previewPath(num: number): string {
-  return `/captn-previews/${num}.svg`;
+export function previewPath(filename: string): string {
+  return `/captn-previews/${encodeURIComponent(filename)}`;
 }

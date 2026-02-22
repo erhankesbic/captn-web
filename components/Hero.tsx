@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SCREENS, previewPath } from "@/content/screens";
 
@@ -34,14 +35,13 @@ export default function Hero() {
           <div className="mb-8 flex justify-center md:justify-start">
             <div className="relative group">
               <div className="absolute -inset-1 rounded-[1.5rem] bg-gradient-to-r from-[var(--accent)] to-[#5856d6] opacity-30 blur transition duration-500 group-hover:opacity-60"></div>
-              <img
+              <Image
                 src="/logo/captndatalogo-iOS-Default-1024x1024@1x.png"
                 alt="Capt'n App Icon"
                 width={88}
                 height={88}
-                className="relative h-22 w-22 rounded-[1.25rem] shadow-2xl shadow-black/20 ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105"
-                loading="eager"
-                decoding="async"
+                className="relative h-[88px] w-[88px] rounded-[1.25rem] shadow-2xl shadow-black/20 ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105"
+                priority
               />
             </div>
           </div>

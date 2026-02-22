@@ -89,9 +89,14 @@ export default function Nav() {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="border-t border-[var(--border)]/40 px-4 pb-4 pt-2 lg:hidden">
+        {/* Mobile menu – smooth slide-down via max-height transition */}
+        <div
+          className={`overflow-hidden transition-all duration-200 ease-in-out lg:hidden ${
+            menuOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+          aria-hidden={!menuOpen}
+        >
+          <div className="border-t border-[var(--border)]/40 px-4 pb-4 pt-2">
             <ul className="flex flex-col gap-1" role="list">
               {links.map((link) => (
                 <li key={link.href}>
@@ -115,7 +120,7 @@ export default function Nav() {
               </li>
             </ul>
           </div>
-        )}
+        </div>
       </nav>
     </div>
   );

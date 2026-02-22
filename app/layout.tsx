@@ -35,7 +35,12 @@ export const metadata: Metadata = {
     title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
     description:
       "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach.",
-    images: ["/logo/captndatalogo-iOS-Default-1024x1024@1x.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
+    description: "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach.",
   },
 };
 

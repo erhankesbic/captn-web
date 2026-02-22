@@ -83,16 +83,16 @@ export default function Pricing() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
+          <p className="text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
             Preise
           </p>
           <h2
             id="pricing-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+            className="mt-3 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl"
           >
-            Fair & transparent
+            Fair &amp; transparent
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-xl text-[var(--muted)]">
+          <p className="mx-auto mt-6 max-w-2xl text-xl text-[var(--muted)] leading-relaxed">
             Fairplay-Freemium: Starte kostenlos, upgrade wenn du mehr willst.
           </p>
         </motion.div>
@@ -108,7 +108,7 @@ export default function Pricing() {
               viewport={{ once: true, margin: "-40px" }}
               className={`premium-card relative flex flex-col p-8 ${
                 plan.highlighted
-                  ? "ring-2 ring-[var(--accent)] shadow-2xl shadow-[var(--accent)]/20 scale-105 z-10"
+                  ? "ring-2 ring-[var(--accent)] shadow-2xl shadow-[var(--accent)]/20 scale-105 z-10 hover:scale-[1.08] hover:shadow-[var(--accent)]/35"
                   : "border border-[var(--border)]"
               }`}
             >
