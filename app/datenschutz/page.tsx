@@ -40,10 +40,10 @@ export default function DatenschutzPage() {
         <section>
           <h2 className="text-lg font-semibold">3. Daten auf dieser Website</h2>
           <p className="mt-2 text-[var(--muted)]">
-            Beim Beta-Tester-Formular erheben wir: E-Mail-Adresse sowie die
-            freiwilligen Angaben „Warum möchtest du Captn testen?“ und
+            Bei Kontaktformularen (z. B. Beta-Anmeldung) erheben wir: E-Mail-Adresse sowie
+            die freiwilligen Angaben „Warum möchtest du Captn testen?“ und
             „Erfahrung Fitness & Ernährung“. Zweck: Kontaktaufnahme im Rahmen der
-            Beta-Bewerbung. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1
+            Anmeldung. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1
             lit. a DSGVO) durch Aktivierung der Checkbox und Absenden des
             Formulars.
           </p>

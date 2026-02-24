@@ -1,9 +1,70 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Status = "idle" | "loading" | "success" | "error";
+
+/* Live counter of remaining spots – purely cosmetic urgency */
+function SpotsCounter() {
+  const [spots, setSpots] = useState(47);
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setSpots((s) => {
+        if (s <= 12) return s;
+        return Math.random() > 0.7 ? s - 1 : s;
+      });
+    }, 8000);
+    return () => clearInterval(iv);
+  }, []);
+  return (
+    <motion.div
+      className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-2 text-sm font-bold text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 shadow-sm"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+    >
+      <span className="relative flex h-2.5 w-2.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-500 opacity-75" />
+        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-amber-500" />
+      </span>
+      Noch {spots} Tester-Plätze verfügbar
+    </motion.div>
+  );
+}
+
+/* Social proof badge */
+function SocialProof() {
+  return (
+    <motion.div
+      className="mt-8 flex items-center gap-3"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.5 }}
+    >
+      {/* Avatar stack */}
+      <div className="flex -space-x-2">
+        {["ML", "SK", "TM", "JR"].map((initials, i) => (
+          <div
+            key={initials}
+            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[var(--background)] text-[10px] font-bold text-white shadow-sm"
+            style={{
+              background: `linear-gradient(135deg, var(--accent) 0%, #5856d6 100%)`,
+              zIndex: 4 - i,
+            }}
+          >
+            {initials}
+          </div>
+        ))}
+      </div>
+      <p className="text-sm text-[var(--muted)]">
+        <span className="font-bold text-[var(--foreground)]">500+</span> haben sich bereits angemeldet
+      </p>
+    </motion.div>
+  );
+}
 
 export default function BetaForm() {
   const [email, setEmail] = useState("");
@@ -45,9 +106,7 @@ export default function BetaForm() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setErrorMessage(
-          data.message || "Versand fehlgeschlagen. Bitte später erneut versuchen."
-        );
+        setErrorMessage(data.message || "Versand fehlgeschlagen. Bitte später erneut versuchen.");
         setStatus("error");
         return;
       }
@@ -56,9 +115,7 @@ export default function BetaForm() {
       setWhy("");
       setExperience("");
     } catch {
-      setErrorMessage(
-        "Netzwerkfehler. Bitte prüfe deine Verbindung und versuche es erneut."
-      );
+      setErrorMessage("Netzwerkfehler. Bitte prüfe deine Verbindung und versuche es erneut.");
       setStatus("error");
     }
   }
@@ -72,25 +129,28 @@ export default function BetaForm() {
       >
         <motion.div
           className="mx-auto max-w-xl text-center"
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.5, type: "spring" }}
         >
-          <div
-            className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full"
+          <motion.div
+            className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full"
             style={{ background: "var(--success)" }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
           >
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 28 28" fill="none" aria-hidden="true">
               <path d="M5 14l6 6 12-12" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </div>
+          </motion.div>
           <h2
             id="beta-heading"
-            className="text-3xl font-semibold tracking-tight text-[var(--foreground)]"
+            className="text-4xl font-bold tracking-tight text-[var(--foreground)]"
           >
-            Bewerbung abgeschickt!
+            Bewerbung abgeschickt! 🎉
           </h2>
-          <p className="mt-4 text-lg text-[var(--muted)]">
+          <p className="mt-4 text-lg text-[var(--muted)] leading-relaxed">
             Vielen Dank! Wir melden uns bei dir, sobald die Beta startet.
           </p>
         </motion.div>
@@ -99,28 +159,38 @@ export default function BetaForm() {
   }
 
   const inputClass =
-    "mt-2 w-full rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-[var(--foreground)] placeholder:text-[var(--muted)] transition-colors focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20 disabled:opacity-50";
+    "mt-2 w-full rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-3.5 text-[var(--foreground)] placeholder:text-[var(--muted)]/60 transition-all focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20 focus:shadow-lg focus:shadow-[var(--accent)]/5 disabled:opacity-50";
 
   return (
     <section
       id="beta"
-      className="bg-[var(--section-alt)] px-6 py-20 sm:px-8 sm:py-28"
+      className="bg-[var(--section-alt)] px-6 py-20 sm:px-8 sm:py-28 relative overflow-hidden"
       aria-labelledby="beta-heading"
     >
+      {/* Decorative gradient blobs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[var(--accent)]/8 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/8 rounded-full blur-3xl -z-10" />
+
       <div className="mx-auto max-w-6xl grid gap-12 md:grid-cols-2 md:items-start">
         {/* Left: Context */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-[var(--accent)]">
-            Beta-Programm
+          <SpotsCounter />
+
+          <p className="mt-6 text-sm font-bold uppercase tracking-widest text-[var(--accent)]">
+            Feedback-Programm
           </p>
 
           {/* App Icon */}
-          <div className="mt-5 mb-2">
+          <motion.div
+            className="mt-5 mb-2"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <img
               src="/logo/captndatalogo-iOS-Default-1024x1024@1x.png"
               alt="Capt'n App Icon"
@@ -130,58 +200,67 @@ export default function BetaForm() {
               loading="lazy"
               decoding="async"
             />
-          </div>
+          </motion.div>
 
           <h2
             id="beta-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl"
+            className="mt-3 text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl"
           >
-            Sei als Erster dabei
+            Teste neue Features zuerst
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[var(--muted)]">
-            Noch nicht im App Store – werde Beta-Tester und gib uns Feedback.
-            Du bekommst frühzeitigen Zugang und hilfst, Capt&apos;n vor dem Launch zu formen.
+            Capt&apos;n ist jetzt im App Store – aber es gibt immer neue Features zu testen.
+            Werde Teil unseres Feedback-Programms und teste die neuesten Funktionen
+            bevor alle anderen.
           </p>
 
           <ul className="mt-8 space-y-4">
             {[
-              "Frühzeitiger App-Zugang",
+              "Neue Features zuerst testen",
               "Direkter Feedback-Kanal zum Team",
-              "Kostenlose Nutzung während der Beta",
+              "Kostenlose Nutzung über TestFlight",
               "Einfluss auf neue Features",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-3 text-[var(--foreground)]">
+            ].map((item, i) => (
+              <motion.li
+                key={item}
+                className="flex items-center gap-3 text-[var(--foreground)] font-medium"
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.08 }}
+              >
                 <span
-                  className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-white"
+                  className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-white shadow-md"
                   style={{ background: "var(--accent)" }}
                   aria-hidden="true"
                 >
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
                     <path d="M2 5.5l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </span>
                 {item}
-              </li>
+              </motion.li>
             ))}
           </ul>
+
+          <SocialProof />
         </motion.div>
 
         {/* Right: Form */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="premium-card p-8">
+          <div className="premium-card p-8 relative overflow-hidden">
+            {/* Subtle shimmer line at top */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent" />
+
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div>
-                <label
-                  htmlFor="beta-email"
-                  className="block text-sm font-semibold text-[var(--foreground)]"
-                >
-                  E-Mail-Adresse{" "}
-                  <span className="text-red-500" aria-hidden="true">*</span>
+                <label htmlFor="beta-email" className="block text-sm font-semibold text-[var(--foreground)]">
+                  E-Mail-Adresse <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="beta-email"
@@ -197,10 +276,7 @@ export default function BetaForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="beta-why"
-                  className="block text-sm font-semibold text-[var(--foreground)]"
-                >
+                <label htmlFor="beta-why" className="block text-sm font-semibold text-[var(--foreground)]">
                   Warum möchtest du Capt&apos;n testen?{" "}
                   <span className="text-[var(--muted)] font-normal">(optional)</span>
                 </label>
@@ -216,10 +292,7 @@ export default function BetaForm() {
               </div>
 
               <div>
-                <label
-                  htmlFor="beta-experience"
-                  className="block text-sm font-semibold text-[var(--foreground)]"
-                >
+                <label htmlFor="beta-experience" className="block text-sm font-semibold text-[var(--foreground)]">
                   Fitness & Ernährungs-Erfahrung{" "}
                   <span className="text-[var(--muted)] font-normal">(optional)</span>
                 </label>
@@ -245,12 +318,7 @@ export default function BetaForm() {
                 />
                 <label htmlFor="beta-consent" className="text-sm text-[var(--muted)] leading-relaxed">
                   Ich habe die{" "}
-                  <a
-                    href="/datenschutz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[var(--accent)] font-medium hover:underline underline-offset-2"
-                  >
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] font-medium hover:underline underline-offset-2">
                     Datenschutzerklärung
                   </a>{" "}
                   gelesen und akzeptiere die Verarbeitung meiner Angaben.{" "}
@@ -258,30 +326,44 @@ export default function BetaForm() {
                 </label>
               </div>
 
-              {errorMessage && (
-                <p
-                  role="alert"
-                  className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700 dark:bg-red-900/20 dark:text-red-400"
-                >
-                  {errorMessage}
-                </p>
-              )}
+              <AnimatePresence>
+                {errorMessage && (
+                  <motion.p
+                    role="alert"
+                    className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700 dark:bg-red-900/20 dark:text-red-400"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                  >
+                    {errorMessage}
+                  </motion.p>
+                )}
+              </AnimatePresence>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full rounded-full bg-gradient-to-r from-[var(--accent)] to-[#5856d6] py-4 text-base font-bold text-white shadow-xl shadow-[var(--accent)]/30 transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-[var(--accent)]/40 disabled:opacity-60 disabled:scale-100"
+                className="pulse-glow w-full rounded-full bg-gradient-to-r from-[var(--accent)] to-[#5856d6] py-4 text-base font-bold text-white shadow-xl shadow-[var(--accent)]/30 transition-all hover:shadow-2xl hover:shadow-[var(--accent)]/40 disabled:opacity-60"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {status === "loading" ? "Wird gesendet …" : "Jetzt als Beta-Tester bewerben"}
-              </button>
+                {status === "loading" ? (
+                  <span className="inline-flex items-center gap-2">
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z"/>
+                    </svg>
+                    Wird gesendet …
+                  </span>
+                ) : (
+                  "Jetzt als Tester bewerben →"
+                )}
+              </motion.button>
             </form>
           </div>
           <p className="mt-4 text-center text-sm text-[var(--muted)]">
             Weitere Infos:{" "}
-            <a
-              href="/datenschutz"
-              className="text-[var(--accent)] font-medium hover:underline underline-offset-2"
-            >
+            <a href="/datenschutz" className="text-[var(--accent)] font-medium hover:underline underline-offset-2">
               Datenschutzerklärung
             </a>
           </p>

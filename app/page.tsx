@@ -6,7 +6,7 @@ import HowItWorks from "@/components/HowItWorks";
 import AppPreviews from "@/components/AppPreviews";
 import Pricing from "@/components/Pricing";
 import FeatureComparison from "@/components/FeatureComparison";
-import BetaForm from "@/components/BetaForm";
+import ComingSoon from "@/components/ComingSoon";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 
@@ -22,10 +22,10 @@ export default function Home() {
         <AppPreviews />
         <Pricing />
         <FeatureComparison />
-        <BetaForm />
+        <ComingSoon />
         <FAQ />
-        <Contact />
       </main>
+      <Contact />
     </>
   );
 }

@@ -66,7 +66,7 @@ export default function Image() {
             letterSpacing: "0.02em",
           }}
         >
-          Beta · Nur iOS · DACH · Training + Ernährung
+          Jetzt verfügbar · iOS · DACH · Training + Ernährung
         </div>
       </div>
     ),

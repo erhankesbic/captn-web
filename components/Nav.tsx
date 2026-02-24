@@ -1,16 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const links = [
-    { href: "#vorteile", label: "Vorteile" },
-    { href: "#features", label: "Features" },
-    { href: "#how-it-works", label: "So funktioniert's" },
-    { href: "#pricing", label: "Preise" },
-    { href: "#faq", label: "FAQ" },
+    { href: "/#vorteile", label: "Vorteile" },
+    { href: "/#features", label: "Features" },
+    { href: "/#how-it-works", label: "So funktioniert's" },
+    { href: "/#pricing", label: "Preise" },
+    { href: "/#faq", label: "FAQ" },
   ];
 
   return (
@@ -21,8 +24,8 @@ export default function Nav() {
       >
         <div className="flex items-center justify-between px-4 py-2.5 sm:px-6">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-2 text-lg font-bold tracking-tight text-[var(--foreground)] transition-transform hover:scale-105"
             aria-label="Capt'n – Startseite"
           >
@@ -33,7 +36,7 @@ export default function Nav() {
               aria-hidden="true"
             />
             <span className="hidden sm:inline-block">Capt&apos;n</span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <ul className="hidden gap-8 lg:flex" role="list">
@@ -50,12 +53,18 @@ export default function Nav() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#beta"
+            <Link
+              href="https://apps.apple.com/app/captn"
+              className="hidden sm:inline-flex items-center justify-center rounded-full border border-[var(--accent)]/30 px-4 py-2 text-sm font-medium text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10 hover:scale-105"
+            >
+              App laden
+            </Link>
+            <Link
+              href="/#download"
               className="hidden sm:inline-flex items-center justify-center rounded-full bg-[var(--foreground)] px-5 py-2 text-sm font-semibold text-[var(--background)] transition-all hover:scale-105 hover:shadow-lg hover:shadow-[var(--foreground)]/20"
             >
-              Jetzt bewerben
-            </a>
+              App entdecken
+            </Link>
 
             {/* Hamburger – mobile only */}
             <button
@@ -110,13 +119,22 @@ export default function Nav() {
                 </li>
               ))}
               <li className="mt-2">
-                <a
-                  href="#beta"
+                <Link
+                  href="https://apps.apple.com/app/captn"
+                  onClick={() => setMenuOpen(false)}
+                  className="block w-full rounded-xl border border-[var(--accent)]/30 px-4 py-3 text-center text-sm font-medium text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10"
+                >
+                  App laden
+                </Link>
+              </li>
+              <li className="mt-2">
+                <Link
+                  href="/#download"
                   onClick={() => setMenuOpen(false)}
                   className="block w-full rounded-xl bg-[var(--foreground)] px-4 py-3 text-center text-sm font-semibold text-[var(--background)] transition-all hover:bg-[var(--foreground)]/90"
                 >
-                  Jetzt bewerben
-                </a>
+                  App entdecken
+                </Link>
               </li>
             </ul>
           </div>

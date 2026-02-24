@@ -10,15 +10,15 @@ const items = [
   },
   {
     q: "Für welche Geräte ist Capt'n verfügbar?",
-    a: "Aktuell nur für iPhone und iPad (iOS). Die App ist in der Beta-Phase und noch nicht im App Store – du kannst dich über diese Seite als Beta-Tester bewerben.",
+    a: "Capt'n ist eine native iOS-App für iPhone und iPad. Du kannst die App jetzt kostenlos im App Store herunterladen.",
   },
   {
     q: "Was kostet Capt'n?",
-    a: "Es gibt eine kostenlose Stufe (Free) und zwei Bezahlstufen: Basic (4,99 €/Monat oder 44,99 €/Jahr) und Premium (7,99 €/Monat oder 69,99 €/Jahr). Mit dem Jahresabo sparst du deutlich. Details findest du in der Preistabelle oben.",
+    a: "Es gibt eine kostenlose Stufe (Free) und zwei Bezahlstufen: Basic (4,99 €/Monat oder 44,99 €/Jahr) und Premium (7,99 €/Monat oder 69,99 €/Jahr). Mit dem Jahresabo sparst du deutlich. Details findest du in der Preisübersicht.",
   },
   {
-    q: "Wie läuft die Beta ab?",
-    a: "Du bewirbst dich über das Formular. Wir melden uns per E-Mail und geben dir Zugang zur Beta. Dein Feedback hilft uns, Capt'n vor dem App-Store-Start zu verbessern.",
+    q: "Ist Capt'n im App Store verfügbar?",
+    a: "Ja! Capt'n ist jetzt im App Store verfügbar. Lade die App kostenlos herunter und starte sofort mit deinem persönlichen KI-Fitness-Coach.",
   },
   {
     q: "Werden meine Daten sicher behandelt?",
