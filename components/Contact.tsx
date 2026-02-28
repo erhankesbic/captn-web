@@ -85,6 +85,7 @@ export default function Contact() {
                 {[
                   { href: "/impressum", label: "Impressum" },
                   { href: "/datenschutz", label: "Datenschutz" },
+                  { href: "/app-datenschutz", label: "App Datenschutz & AGB" },
                   { href: "/cookie-einstellungen", label: "Cookie-Einstellungen" },
                 ].map((l) => (
                   <li key={l.href}>
