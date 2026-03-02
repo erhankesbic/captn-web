@@ -6,7 +6,7 @@ import { GALLERY_SCREENS, previewPath } from "@/content/screens";
 const labels: Record<string, string> = {
   "dashboard.svg": "Dashboard",
   "workoutplan.svg": "Workoutplan",
-  "ernnährungs_tab_mit_heutigen_mahlzeite_kalorien_makros.svg": "Ernährung & Makros",
+  "ernaehrungs_tab_mit_heutigen_mahlzeite_kalorien_makros.svg": "Ernährung & Makros",
   "ki_kalorienrechner.svg": "KI Kalorienrechner",
   "workout_abgeschlossen_zusammenfassung.svg": "Workout abgeschlossen",
   "user_profil_view.svg": "Mein Profil",
