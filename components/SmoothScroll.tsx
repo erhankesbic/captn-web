@@ -18,12 +18,14 @@ export default function SmoothScroll() {
       infinite: false,
     });
 
+    let rafId: number;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -39,6 +41,7 @@ export default function SmoothScroll() {
     });
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);

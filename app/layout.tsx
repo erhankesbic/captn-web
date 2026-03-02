@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://getcaptn.de"),
   title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
   description:
     "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach. Jetzt im App Store.",
