@@ -213,7 +213,7 @@ function PricingCard({
       </ul>
 
       <a
-        href="https://apps.apple.com/app/captn"
+        href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
         target="_blank"
         rel="noopener noreferrer"
         className={`mt-10 block w-full rounded-full py-4 text-center text-base font-bold transition-all hover:scale-105 ${

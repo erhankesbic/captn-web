@@ -264,7 +264,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             <a
-              href="https://apps.apple.com/app/captn"
+              href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
               target="_blank"
               rel="noopener noreferrer"
               className="pulse-glow group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-[var(--accent)] to-[#5856d6] px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-[var(--accent)]/30 transition-all hover:scale-105 hover:shadow-[var(--accent)]/50"

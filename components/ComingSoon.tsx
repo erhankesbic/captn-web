@@ -45,7 +45,7 @@ export default function ComingSoon() {
         >
           {/* App Store badge */}
           <motion.a
-            href="https://apps.apple.com/app/captn"
+            href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative"

@@ -255,7 +255,7 @@ export default function Features() {
           transition={{ duration: 0.5 }}
         >
           <a
-            href="https://apps.apple.com/app/captn"
+            href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
             target="_blank"
             rel="noopener noreferrer"
             className="pulse-glow group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--foreground)] px-8 py-4 text-base font-semibold text-[var(--background)] transition-all hover:scale-105 hover:shadow-xl"

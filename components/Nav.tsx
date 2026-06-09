@@ -54,7 +54,7 @@ export default function Nav() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="https://apps.apple.com/app/captn"
+              href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
               className="hidden sm:inline-flex items-center justify-center rounded-full border border-[var(--accent)]/30 px-4 py-2 text-sm font-medium text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10 hover:scale-105"
             >
               App laden
@@ -120,7 +120,7 @@ export default function Nav() {
               ))}
               <li className="mt-2">
                 <Link
-                  href="https://apps.apple.com/app/captn"
+                  href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
                   onClick={() => setMenuOpen(false)}
                   className="block w-full rounded-xl border border-[var(--accent)]/30 px-4 py-3 text-center text-sm font-medium text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10"
                 >
