@@ -1,31 +1,31 @@
-import Link from "next/link";
+import LegalPage from "@/components/LegalPage";
 
 export const metadata = {
-  title: "App Nutzungsbedingungen – Captn",
+  title: "Nutzungsbedingungen (App)",
   description:
-    "Nutzungsbedingungen der Captn iOS-App / Terms of Use of the Captn iOS App.",
+    "Nutzungsbedingungen der Capt'n-App / Terms of Use of the Capt'n app.",
+  alternates: { canonical: "/app-nutzungsbedingungen" },
 };
 
 export default function AppNutzungsbedingungenPage() {
   return (
-    <div className="min-h-screen bg-[var(--background)] px-4 py-12 sm:px-6">
-      <article className="mx-auto max-w-2xl space-y-16 text-[var(--foreground)]">
+    <LegalPage>
         {/* ══════════════════════════════════════════════
             DEUTSCH
            ══════════════════════════════════════════════ */}
-        <div className="space-y-8">
+        <div>
           <div>
-            <h1 className="text-2xl font-bold">
+            <h1>
               Nutzungsbedingungen der Captn App
             </h1>
-            <p className="mt-2 text-sm text-[var(--muted)]">
+            <p>
               Zuletzt aktualisiert: 16. Februar 2026
             </p>
           </div>
 
           <section>
-            <h2 className="text-lg font-semibold">1. Geltungsbereich</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>1. Geltungsbereich</h2>
+            <p>
               Diese Nutzungsbedingungen gelten für die Nutzung der Captn App,
               bereitgestellt von Erhan Kesbic. Mit der Nutzung der App
               akzeptierst du diese Bedingungen.
@@ -33,15 +33,15 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               2. Leistungsbeschreibung
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Captn ist eine KI-gestützte Fitness- und Ernährungs-App, die
               personalisierte Trainings- und Ernährungspläne erstellt,
               Mahlzeiten per Foto analysiert und den Fortschritt verfolgt.
             </p>
-            <p className="mt-4 text-[var(--muted)]">
+            <p>
               Die App ersetzt keine ärztliche Beratung. Konsultiere vor
               Beginn eines Trainingsprogramms deinen Arzt, insbesondere bei
               gesundheitlichen Einschränkungen.
@@ -49,10 +49,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               3. Abonnements &amp; In-App-Käufe
             </h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <ul>
               <li>
                 Die App bietet kostenlose und kostenpflichtige Funktionen
               </li>
@@ -70,10 +70,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               4. KI-generierte Inhalte
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Trainings- und Ernährungspläne sowie Nährwertanalysen werden von
               KI erstellt. Diese Inhalte dienen als Orientierung und können
               Ungenauigkeiten enthalten. Wir übernehmen keine Haftung für
@@ -82,8 +82,8 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">5. Account &amp; Daten</h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <h2>5. Account &amp; Daten</h2>
+            <ul>
               <li>
                 Du bist für die Sicherheit deines Accounts verantwortlich
               </li>
@@ -95,10 +95,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               6. Haftungsausschluss
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Die App wird &bdquo;wie sie ist&ldquo; bereitgestellt. Wir
               garantieren keine ununterbrochene Verfügbarkeit. Die Nutzung
               der Trainings- und Ernährungsempfehlungen erfolgt auf eigene
@@ -107,10 +107,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               7. Geistiges Eigentum
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Alle Inhalte, Designs und Funktionen der App sind urheberrechtlich
               geschützt. Eine Vervielfältigung, Verbreitung oder Veränderung
               ohne ausdrückliche Genehmigung ist untersagt.
@@ -118,10 +118,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               8. Änderungen der Nutzungsbedingungen
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Wir behalten uns das Recht vor, diese Nutzungsbedingungen
               jederzeit zu ändern. Wesentliche Änderungen werden in der App
               oder per E-Mail mitgeteilt. Die fortgesetzte Nutzung der App
@@ -130,24 +130,23 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               9. Anwendbares Recht
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Es gilt deutsches Recht. Gerichtsstand ist Frankfurt am Main,
               soweit gesetzlich zulässig.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">10. Kontakt</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>10. Kontakt</h2>
+            <p>
               Erhan Kesbic
               <br />
               E-Mail:{" "}
               <a
                 href="mailto:support@getcaptn.de"
-                className="text-[var(--accent)] underline"
               >
                 support@getcaptn.de
               </a>
@@ -156,39 +155,39 @@ export default function AppNutzungsbedingungenPage() {
         </div>
 
         {/* ── Trennlinie ── */}
-        <hr className="border-white/10" />
+        <hr />
 
         {/* ══════════════════════════════════════════════
             ENGLISH
            ══════════════════════════════════════════════ */}
-        <div className="space-y-8">
+        <div id="en">
           <div>
-            <h1 className="text-2xl font-bold">
+            <h1>
               Terms of Use – Captn App
             </h1>
-            <p className="mt-2 text-sm text-[var(--muted)]">
+            <p>
               Last updated: February 16, 2026
             </p>
           </div>
 
           <section>
-            <h2 className="text-lg font-semibold">1. Scope</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>1. Scope</h2>
+            <p>
               These Terms of Use apply to the use of the Captn App, provided
               by Erhan Kesbic. By using the app, you accept these terms.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               2. Description of Services
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Captn is an AI-powered fitness and nutrition app that creates
               personalized training and nutrition plans, analyzes meals via
               photo, and tracks your progress.
             </p>
-            <p className="mt-4 text-[var(--muted)]">
+            <p>
               The app does not replace medical advice. Consult your doctor
               before starting any training program, especially if you have
               health conditions.
@@ -196,10 +195,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               3. Subscriptions &amp; In-App Purchases
             </h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <ul>
               <li>
                 The app offers both free and paid features
               </li>
@@ -217,10 +216,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               4. AI-Generated Content
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               Training plans, nutrition plans, and nutritional analyses are
               generated by AI. This content serves as guidance and may
               contain inaccuracies. We accept no liability for AI-generated
@@ -229,8 +228,8 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">5. Account &amp; Data</h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <h2>5. Account &amp; Data</h2>
+            <ul>
               <li>
                 You are responsible for the security of your account
               </li>
@@ -242,10 +241,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               6. Disclaimer
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               The app is provided &ldquo;as is.&rdquo; We do not guarantee
               uninterrupted availability. The use of training and nutrition
               recommendations is at your own risk.
@@ -253,10 +252,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               7. Intellectual Property
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               All content, designs, and features of the app are protected by
               copyright. Reproduction, distribution, or modification without
               express permission is prohibited.
@@ -264,10 +263,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               8. Changes to these Terms
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               We reserve the right to modify these Terms of Use at any time.
               Material changes will be communicated within the app or via
               email. Continued use of the app after a change constitutes
@@ -276,24 +275,23 @@ export default function AppNutzungsbedingungenPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               9. Governing Law
             </h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <p>
               German law applies. The place of jurisdiction is Frankfurt am
               Main, to the extent permitted by law.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">10. Contact</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>10. Contact</h2>
+            <p>
               Erhan Kesbic
               <br />
               Email:{" "}
               <a
                 href="mailto:support@getcaptn.de"
-                className="text-[var(--accent)] underline"
               >
                 support@getcaptn.de
               </a>
@@ -301,22 +299,10 @@ export default function AppNutzungsbedingungenPage() {
           </section>
         </div>
 
-        {/* ── Links ── */}
-        <div className="flex flex-wrap gap-4 pt-4">
-          <Link
-            href="/app-datenschutz"
-            className="text-[var(--accent)] underline underline-offset-4"
-          >
-            App Datenschutz / Privacy Policy →
-          </Link>
-          <Link
-            href="/"
-            className="text-[var(--accent)] underline underline-offset-4"
-          >
-            ← Zurück zur Startseite / Back to Home
-          </Link>
-        </div>
-      </article>
-    </div>
+        <hr />
+        <p>
+          <a href="/app-datenschutz">Datenschutzerklärung der App / Privacy Policy →</a>
+        </p>
+      </LegalPage>
   );
 }

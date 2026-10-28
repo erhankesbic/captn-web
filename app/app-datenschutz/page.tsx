@@ -1,42 +1,45 @@
-import Link from "next/link";
+import LegalPage from "@/components/LegalPage";
 
 export const metadata = {
-  title: "App Datenschutz – Captn",
+  title: "Datenschutz (App)",
   description:
-    "Datenschutzerklärung der Captn iOS-App / Privacy Policy of the Captn iOS App.",
+    "Datenschutzerklärung der Capt'n-App für iPhone und Apple Watch / Privacy Policy of the Capt'n app.",
+  alternates: { canonical: "/app-datenschutz" },
 };
 
 export default function AppDatenschutzPage() {
   return (
-    <div className="min-h-screen bg-[var(--background)] px-4 py-12 sm:px-6">
-      <article className="mx-auto max-w-2xl space-y-16 text-[var(--foreground)]">
+    <LegalPage>
         {/* ══════════════════════════════════════════════
             DEUTSCH
            ══════════════════════════════════════════════ */}
-        <div className="space-y-8">
+        <div>
           <div>
-            <h1 className="text-2xl font-bold">
+            <h1>
               Datenschutzerklärung der Captn App
             </h1>
-            <p className="mt-2 text-sm text-[var(--muted)]">
+            <p>
               Zuletzt aktualisiert: 16. Februar 2026
             </p>
           </div>
 
           <section>
-            <h2 className="text-lg font-semibold">1. Verantwortlicher</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>1. Verantwortlicher</h2>
+            <p>
               Erhan Kesbic
+              <br />
+              Seckbacher Landstraße 74
+              <br />
+              60389 Frankfurt am Main, Deutschland
               <br />
               E-Mail:{" "}
               <a
                 href="mailto:support@getcaptn.de"
-                className="text-[var(--accent)] underline"
               >
                 support@getcaptn.de
               </a>
             </p>
-            <p className="mt-4 text-[var(--muted)]">
+            <p>
               Wir nehmen den Schutz deiner persönlichen Daten sehr ernst und
               halten uns an die geltenden Datenschutzgesetze, insbesondere die
               DSGVO.
@@ -44,10 +47,10 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               2. Welche Daten wir erheben
             </h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <ul>
               <li>Kontodaten: E-Mail-Adresse, Name (optional)</li>
               <li>
                 Gesundheits- &amp; Fitnessdaten: Körpergröße, Gewicht,
@@ -70,10 +73,10 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               3. Zweck der Datenverarbeitung
             </h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <ul>
               <li>
                 Bereitstellung personalisierter Trainings- und
                 Ernährungspläne mittels KI
@@ -89,8 +92,8 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">4. KI-Verarbeitung</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>4. KI-Verarbeitung</h2>
+            <p>
               Wir nutzen KI-Dienste (OpenAI) zur Erstellung von Trainings-
               und Ernährungsplänen sowie zur Analyse von Essensfotos. Dabei
               werden anonymisierte Daten verarbeitet. Deine Fotos werden nur
@@ -100,8 +103,8 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">5. Datenspeicherung</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>5. Datenspeicherung</h2>
+            <p>
               Deine Daten werden auf Servern von Convex (USA) gespeichert.
               Die Übertragung erfolgt verschlüsselt (TLS).
               Authentifizierungs-Token werden sicher in der iOS Keychain
@@ -110,11 +113,11 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               6. Deine Rechte (DSGVO)
             </h2>
-            <p className="mt-2 text-[var(--muted)]">Du hast das Recht auf:</p>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <p>Du hast das Recht auf:</p>
+            <ul>
               <li>Auskunft über deine gespeicherten Daten</li>
               <li>Berichtigung unrichtiger Daten</li>
               <li>
@@ -125,15 +128,15 @@ export default function AppDatenschutzPage() {
               <li>Datenübertragbarkeit</li>
               <li>Widerspruch gegen die Verarbeitung</li>
             </ul>
-            <p className="mt-4 text-[var(--muted)]">
+            <p>
               Du kannst dein Konto und alle zugehörigen Daten jederzeit in
               der App unter Profil &gt; Account löschen entfernen.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">7. Apple Health</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>7. Apple Health</h2>
+            <p>
               Die Verbindung zu Apple Health ist vollständig optional. Wir
               lesen nur die Datentypen, denen du explizit zugestimmt hast.
               Apple Health Daten werden nicht an Dritte weitergegeben und
@@ -142,12 +145,11 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">8. Kontakt</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>8. Kontakt</h2>
+            <p>
               Bei Fragen zum Datenschutz erreichst du uns unter:{" "}
               <a
                 href="mailto:support@getcaptn.de"
-                className="text-[var(--accent)] underline"
               >
                 support@getcaptn.de
               </a>
@@ -156,35 +158,38 @@ export default function AppDatenschutzPage() {
         </div>
 
         {/* ── Trennlinie ── */}
-        <hr className="border-white/10" />
+        <hr />
 
         {/* ══════════════════════════════════════════════
             ENGLISH
            ══════════════════════════════════════════════ */}
-        <div className="space-y-8">
+        <div id="en">
           <div>
-            <h1 className="text-2xl font-bold">
+            <h1>
               Privacy Policy – Captn App
             </h1>
-            <p className="mt-2 text-sm text-[var(--muted)]">
+            <p>
               Last updated: February 16, 2026
             </p>
           </div>
 
           <section>
-            <h2 className="text-lg font-semibold">1. Data Controller</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>1. Data Controller</h2>
+            <p>
               Erhan Kesbic
+              <br />
+              Seckbacher Landstraße 74
+              <br />
+              60389 Frankfurt am Main, Germany
               <br />
               Email:{" "}
               <a
                 href="mailto:support@getcaptn.de"
-                className="text-[var(--accent)] underline"
               >
                 support@getcaptn.de
               </a>
             </p>
-            <p className="mt-4 text-[var(--muted)]">
+            <p>
               We take the protection of your personal data very seriously and
               comply with applicable data protection laws, in particular the
               GDPR.
@@ -192,8 +197,8 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">2. Data We Collect</h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <h2>2. Data We Collect</h2>
+            <ul>
               <li>Account data: email address, name (optional)</li>
               <li>
                 Health &amp; fitness data: height, weight, body fat
@@ -216,10 +221,10 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               3. Purpose of Data Processing
             </h2>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <ul>
               <li>
                 Providing personalized training and nutrition plans using AI
               </li>
@@ -233,8 +238,8 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">4. AI Processing</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>4. AI Processing</h2>
+            <p>
               We use AI services (OpenAI) to create training and nutrition
               plans and to analyze food photos. Anonymized data is processed
               for this purpose. Your photos are used solely for analysis and
@@ -243,8 +248,8 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">5. Data Storage</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>5. Data Storage</h2>
+            <p>
               Your data is stored on servers operated by Convex (USA). All
               transfers are encrypted (TLS). Authentication tokens are stored
               securely in the iOS Keychain.
@@ -252,11 +257,11 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">
+            <h2>
               6. Your Rights (GDPR)
             </h2>
-            <p className="mt-2 text-[var(--muted)]">You have the right to:</p>
-            <ul className="mt-2 list-inside list-disc space-y-2 text-[var(--muted)]">
+            <p>You have the right to:</p>
+            <ul>
               <li>Access the personal data we hold about you</li>
               <li>Rectification of inaccurate data</li>
               <li>
@@ -266,15 +271,15 @@ export default function AppDatenschutzPage() {
               <li>Data portability</li>
               <li>Object to processing</li>
             </ul>
-            <p className="mt-4 text-[var(--muted)]">
+            <p>
               You can delete your account and all associated data at any time
               in the app under Profile &gt; Delete Account.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">7. Apple Health</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>7. Apple Health</h2>
+            <p>
               The connection to Apple Health is entirely optional. We only
               read the data types you have explicitly consented to. Apple
               Health data is not shared with third parties and is not used for
@@ -283,12 +288,11 @@ export default function AppDatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold">8. Contact</h2>
-            <p className="mt-2 text-[var(--muted)]">
+            <h2>8. Contact</h2>
+            <p>
               For privacy-related questions, please contact us at:{" "}
               <a
                 href="mailto:support@getcaptn.de"
-                className="text-[var(--accent)] underline"
               >
                 support@getcaptn.de
               </a>
@@ -296,22 +300,10 @@ export default function AppDatenschutzPage() {
           </section>
         </div>
 
-        {/* ── Links ── */}
-        <div className="flex flex-wrap gap-4 pt-4">
-          <Link
-            href="/app-nutzungsbedingungen"
-            className="text-[var(--accent)] underline underline-offset-4"
-          >
-            App Nutzungsbedingungen / Terms of Use →
-          </Link>
-          <Link
-            href="/"
-            className="text-[var(--accent)] underline underline-offset-4"
-          >
-            ← Zurück zur Startseite / Back to Home
-          </Link>
-        </div>
-      </article>
-    </div>
+        <hr />
+        <p>
+          <a href="/app-nutzungsbedingungen">Nutzungsbedingungen der App / Terms of Use →</a>
+        </p>
+      </LegalPage>
   );
 }

@@ -1,65 +1,41 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Nunito } from "next/font/google";
 import "./globals.css";
-import CookieBanner from "@/components/CookieBanner";
-import SmoothScroll from "@/components/SmoothScroll";
+import { SITE_URL } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+// Ersatz für SF Pro Rounded auf Geräten ohne Apple-Systemschrift
+const nunito = Nunito({ variable: "--font-nunito", subsets: ["latin"], weight: ["800", "900"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const TITLE = "Capt'n – Dein KI-Personal-Trainer für Training & Ernährung";
+const DESCRIPTION =
+  "Trainingsplan nach Maß, Ernährung in Sekunden erfasst und ein KI-Coach, der für dich handelt. Für iPhone und Apple Watch – kostenlos im App Store.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://getcaptn.de"),
-  title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
-  description:
-    "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach. Jetzt im App Store.",
-  keywords: [
-    "Fitness",
-    "KI",
-    "Personal Trainer",
-    "Ernährung",
-    "Training",
-    "App",
-    "iOS",
-    "DACH",
-  ],
-  icons: {
-    icon: "/logo/captndatalogo-iOS-Default-1024x1024@1x.png",
-    apple: "/logo/captndatalogo-iOS-Default-1024x1024@1x.png",
-  },
+  metadataBase: new URL(SITE_URL),
+  title: { default: TITLE, template: "%s – Capt'n" },
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
-    description:
-      "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach. Jetzt im App Store.",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
+    locale: "de_DE",
+    siteName: "Capt'n",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Capt'n – Dein KI-Personal-Trainer & Ernährungsberater",
-    description: "Training + Ernährung in einer App. KI-Trainingspläne, Food Scan, personalisierter Coach. Jetzt im App Store.",
-  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  itunes: { appId: "6759269133" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#08090e",
+  colorScheme: "dark",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
-        <SmoothScroll />
-        {children}
-        <CookieBanner />
-      </body>
+      <body className={`${geist.variable} ${nunito.variable}`}>{children}</body>
     </html>
   );
 }

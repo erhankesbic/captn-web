@@ -1,145 +1,107 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { APP_STORE_URL } from "@/lib/site";
+import { AppleLogo, BrandMark } from "./ui";
+
+const LINKS = [
+  { href: "/#funktionen", label: "Funktionen" },
+  { href: "/#watch", label: "Apple Watch" },
+  { href: "/#preise", label: "Preise" },
+  { href: "/#faq", label: "FAQ" },
+];
 
 export default function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = [
-    { href: "/#vorteile", label: "Vorteile" },
-    { href: "/#features", label: "Features" },
-    { href: "/#how-it-works", label: "So funktioniert's" },
-    { href: "/#pricing", label: "Preise" },
-    { href: "/#faq", label: "FAQ" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const solid = scrolled || open;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-6 pointer-events-none">
-      <nav
-        className="pointer-events-auto w-full max-w-5xl rounded-full glass border border-[var(--border)]/40 shadow-lg shadow-black/5 transition-all duration-300"
-        aria-label="Hauptnavigation"
-      >
-        <div className="flex items-center justify-between px-4 py-2.5 sm:px-6">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-lg font-bold tracking-tight text-[var(--foreground)] transition-transform hover:scale-105"
-            aria-label="Capt'n – Startseite"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        open
+          ? "border-b border-[var(--hairline)] bg-[#08090e]"
+          : solid
+            ? "border-b border-[var(--hairline)] bg-[#08090e]/85 backdrop-blur-xl"
+            : "border-b border-transparent"
+      }`}
+    >
+      <nav aria-label="Hauptnavigation" className="wrap flex h-16 items-center justify-between px-[var(--gutter)] md:px-8">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Capt'n – zur Startseite" onClick={() => setOpen(false)}>
+          <BrandMark size={32} />
+          <span className="display text-[19px]">Capt&apos;n</span>
+        </Link>
+
+        <ul className="hidden items-center gap-8 md:flex">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <a href={l.href} className="text-sm font-semibold text-[var(--text-2)] transition-colors hover:text-white">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary !min-h-10 !px-4 !text-sm"
           >
-            <img
-              src="/logo/captn-logo-fin.svg"
-              alt=""
-              className="h-8 w-auto"
-              aria-hidden="true"
-            />
-            <span className="hidden sm:inline-block">Capt&apos;n</span>
-          </Link>
-
-          {/* Desktop links */}
-          <ul className="hidden gap-8 lg:flex" role="list">
-            {links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-[var(--muted)] transition-all hover:text-[var(--foreground)] hover:drop-shadow-md"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
-              className="hidden sm:inline-flex items-center justify-center rounded-full border border-[var(--accent)]/30 px-4 py-2 text-sm font-medium text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10 hover:scale-105"
-            >
-              App laden
-            </Link>
-            <Link
-              href="/#download"
-              className="hidden sm:inline-flex items-center justify-center rounded-full bg-[var(--foreground)] px-5 py-2 text-sm font-semibold text-[var(--background)] transition-all hover:scale-105 hover:shadow-lg hover:shadow-[var(--foreground)]/20"
-            >
-              App entdecken
-            </Link>
-
-            {/* Hamburger – mobile only */}
-            <button
-              type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--muted)] transition-colors hover:bg-[var(--foreground)]/8 hover:text-[var(--foreground)] lg:hidden"
-              aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((v) => !v)}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                aria-hidden="true"
-              >
-                {menuOpen ? (
-                  <>
-                    <line x1="4" y1="4" x2="16" y2="16" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-                    <line x1="16" y1="4" x2="4" y2="16" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-                  </>
-                ) : (
-                  <>
-                    <line x1="3" y1="6" x2="17" y2="6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-                    <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-                    <line x1="3" y1="14" x2="17" y2="14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-                  </>
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu – smooth slide-down via max-height transition */}
-        <div
-          className={`overflow-hidden transition-all duration-200 ease-in-out lg:hidden ${
-            menuOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
-          }`}
-          aria-hidden={!menuOpen}
-        >
-          <div className="border-t border-[var(--border)]/40 px-4 pb-4 pt-2">
-            <ul className="flex flex-col gap-1" role="list">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="block rounded-xl px-4 py-3 text-sm font-medium text-[var(--muted)] transition-colors hover:bg-[var(--foreground)]/5 hover:text-[var(--foreground)]"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li className="mt-2">
-                <Link
-                  href="https://apps.apple.com/de/app/captn-ki-fitness-ern%C3%A4hrung/id6759269133"
-                  onClick={() => setMenuOpen(false)}
-                  className="block w-full rounded-xl border border-[var(--accent)]/30 px-4 py-3 text-center text-sm font-medium text-[var(--accent)] transition-all hover:bg-[var(--accent)]/10"
-                >
-                  App laden
-                </Link>
-              </li>
-              <li className="mt-2">
-                <Link
-                  href="/#download"
-                  onClick={() => setMenuOpen(false)}
-                  className="block w-full rounded-xl bg-[var(--foreground)] px-4 py-3 text-center text-sm font-semibold text-[var(--background)] transition-all hover:bg-[var(--foreground)]/90"
-                >
-                  App entdecken
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <AppleLogo size={15} />
+            Laden
+          </a>
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--text-2)] hover:bg-white/5 md:hidden"
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              {open ? (
+                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              ) : (
+                <path d="M3 6.5h14M3 13.5h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              )}
+            </svg>
+          </button>
         </div>
       </nav>
-    </div>
+
+      <div id="mobile-menu" hidden={!open} className="border-t border-[var(--hairline)] px-[var(--gutter)] pb-5 md:hidden">
+        <ul className="flex flex-col pt-2">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="display flex min-h-12 items-center border-b border-[var(--hairline)] text-xl"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
   );
 }

@@ -1,107 +1,65 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import LegalPage from "@/components/LegalPage";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
-export const metadata = {
-  title: "Datenschutzerklärung – Captn",
-  description: "Datenschutzerklärung der Captn-Website.",
+export const metadata: Metadata = {
+  title: "Datenschutz (Website)",
+  description: "Datenschutzerklärung für die Website getcaptn.de.",
+  alternates: { canonical: "/datenschutz" },
 };
 
 export default function DatenschutzPage() {
   return (
-    <div className="min-h-screen bg-[var(--background)] px-4 py-12 sm:px-6">
-      <article className="mx-auto max-w-2xl space-y-8 text-[var(--foreground)]">
-        <div>
-          <h1 className="text-2xl font-bold">Datenschutzerklärung</h1>
-          <p className="mt-2 text-sm text-[var(--muted)]">
-            Stand: Februar 2025
-          </p>
-        </div>
+    <LegalPage>
+      <h1>Datenschutzerklärung für diese Website</h1>
+      <p>Stand: Oktober 2026</p>
+      <p>
+        Diese Erklärung gilt für die Website getcaptn.de (und getcaptn.com). Für die iPhone- und Apple-Watch-App gilt die{" "}
+        <Link href="/app-datenschutz">Datenschutzerklärung der App</Link>.
+      </p>
 
-        <section>
-          <h2 className="text-lg font-semibold">1. Verantwortlicher</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Erhan Kesbic, Seckbacher Landstr. 74, 60389 Frankfurt am Main.
-            E-Mail: support@getcaptn.com (siehe Impressum).
-          </p>
-        </section>
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Erhan Kesbic, Seckbacher Landstraße 74, 60389 Frankfurt am Main, E-Mail:{" "}
+        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+      </p>
 
-        <section>
-          <h2 className="text-lg font-semibold">2. Cookies und Einwilligung</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Beim ersten Besuch erscheint ein Cookie-Hinweis. Du kannst wählen:
-            alle Cookies akzeptieren, nur notwendige, oder in den Einstellungen
-            einzelne Kategorien an- oder abwählen. Deine Wahl speichern wir
-            lokal im Browser (localStorage), damit der Hinweis nicht erneut
-            erscheint. Notwendige Cookies/Cookies, die für den Betrieb der
-            Seite unerlässlich sind, setzen wir ohne Einwilligung. Alle weiteren
-            (z. B. Statistik) nur mit deiner Einwilligung.
-          </p>
-        </section>
+      <h2>2. Keine Cookies, kein Tracking</h2>
+      <p>
+        Diese Website setzt keine Cookies, verwendet keine Analyse- oder Werbedienste und bindet keine Inhalte von
+        Drittanbietern ein. Schriften und Bilder werden von unserem eigenen Server ausgeliefert. Ein Cookie-Hinweis ist
+        deshalb nicht nötig.
+      </p>
 
-        <section>
-          <h2 className="text-lg font-semibold">3. Daten auf dieser Website</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Bei Kontaktformularen (z. B. Beta-Anmeldung) erheben wir: E-Mail-Adresse sowie
-            die freiwilligen Angaben „Warum möchtest du Captn testen?“ und
-            „Erfahrung Fitness & Ernährung“. Zweck: Kontaktaufnahme im Rahmen der
-            Anmeldung. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1
-            lit. a DSGVO) durch Aktivierung der Checkbox und Absenden des
-            Formulars.
-          </p>
-        </section>
+      <h2>3. Hosting und Server-Protokolle</h2>
+      <p>
+        Die Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf
+        verarbeitet Vercel technisch notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene Seite, Referrer und
+        Browserkennung, um die Seite auszuliefern und vor Missbrauch zu schützen. Rechtsgrundlage ist unser berechtigtes
+        Interesse an einem sicheren und stabilen Betrieb (Art. 6 Abs. 1 lit. f DSGVO). Für Übermittlungen in die USA
+        stützt sich Vercel auf das EU-US Data Privacy Framework und Standardvertragsklauseln.
+      </p>
 
-        <section>
-          <h2 className="text-lg font-semibold">4. Empfänger und Dienste</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Die Formulardaten werden per E-Mail an support@getcaptn.com
-            übermittelt. Dafür setzen wir den E-Mail-Dienst Resend ein (Anbieter:
-            Resend Inc.). Resend kann Daten in den USA verarbeiten; je nach
-            Konfiguration sind Standardvertragsklauseln bzw. EU-Server möglich.
-            Hosting der Website: Vercel (Vercel Inc.). Weitere Infos findest du
-            in den Datenschutzangaben von Resend und Vercel.
-          </p>
-        </section>
+      <h2>4. Kontakt per E-Mail</h2>
+      <p>
+        Wenn du uns schreibst, verarbeiten wir deine E-Mail-Adresse und den Inhalt deiner Nachricht, um dein Anliegen zu
+        beantworten (Art. 6 Abs. 1 lit. b bzw. f DSGVO). Wir löschen die Nachricht, sobald sie erledigt ist und keine
+        gesetzlichen Aufbewahrungspflichten entgegenstehen.
+      </p>
 
-        <section>
-          <h2 className="text-lg font-semibold">5. Speicherdauer</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Die in der E-Mail an uns übermittelten Daten speichern wir, bis die
-            Beta-Bewerbung abgeschlossen ist oder du uns zur Löschung aufforderst
-            (sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen).
-          </p>
-        </section>
+      <h2>5. Links zum App Store</h2>
+      <p>
+        Links zum App Store führen auf Seiten von Apple. Erst wenn du einem solchen Link folgst, gelten dort die
+        Datenschutzbestimmungen von Apple.
+      </p>
 
-        <section>
-          <h2 className="text-lg font-semibold">6. Deine Rechte</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung
-            der Verarbeitung und Datenübertragbarkeit sowie auf Widerspruch. Die
-            Einwilligung kannst du jederzeit widerrufen. Beschwerden kannst du
-            bei einer Datenschutz-Aufsichtsbehörde einreichen.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold">7. Kontakt</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Für Datenschutzanfragen:{" "}
-            <a
-              href="mailto:support@getcaptn.com"
-              className="text-[var(--accent)] underline"
-            >
-              support@getcaptn.com
-            </a>
-          </p>
-        </section>
-
-        <p className="pt-4">
-          <Link
-            href="/"
-            className="text-[var(--accent)] underline underline-offset-4"
-          >
-            ← Zurück zur Startseite
-          </Link>
-        </p>
-      </article>
-    </div>
+      <h2>6. Deine Rechte</h2>
+      <p>
+        Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und
+        Widerspruch. Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim
+        Hessischen Beauftragten für Datenschutz und Informationsfreiheit.
+      </p>
+    </LegalPage>
   );
 }

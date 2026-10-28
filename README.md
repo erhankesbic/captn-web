@@ -1,42 +1,22 @@
-# Capt'n – Landing Page
+# Capt'n – Website
 
-Landing Page für die Fitness-App Capt'n (getcaptn.de / getcaptn.com). Next.js, TypeScript, Tailwind. Beta-Tester-Formular mit E-Mail-Versand an support@getcaptn.com.
-
-## Veröffentlichen
-
-**Anleitung:** Siehe [DEPLOY.md](DEPLOY.md) – Schritt für Schritt: GitHub, Vercel, IONOS-DNS.
-
-## Lokal starten
-
-First, run the development server:
+Landingpage für die App Capt'n (getcaptn.de, getcaptn.com leitet weiter). Next.js, TypeScript, Tailwind. Gehostet bei Vercel; jeder Push auf `main` geht live.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # vor jedem Push
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Was wo steht
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `lib/site.ts` – App-Store-Link, Support-Adresse, **Preise und Abo-Limits**. Preise kommen aus App Store Connect, Limits aus `SubscriptionFeatureMatrix.swift` in der App. Ändert sich dort etwas, hier nachziehen.
+- `app/page.tsx` – Startseite mit allen Texten.
+- `app/app-datenschutz`, `app/app-nutzungsbedingungen` – werden aus der App heraus verlinkt. Adressen nicht ändern.
+- `public/screens`, `public/gallery`, `public/watch` – echte App-Screens als WebP (Quelle: `Captn/app_store_connect` und `Captn/marketing_ads/_shared/app_screens`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Design
 
-## Learn More
+Gleiche Sprache wie die App („Obsidian“): Fläche `#08090E`, Akzent `#28E8C4`, Hairlines, Überschriften in SF Pro Rounded (Fallback Nunito). Tokens in `app/globals.css`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Keine Cookies, kein Tracking, keine Drittanbieter-Einbindungen. Wer das ändert, muss Datenschutzerklärung und ggf. Einwilligung nachziehen.

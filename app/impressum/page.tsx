@@ -1,56 +1,37 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import LegalPage from "@/components/LegalPage";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
-export const metadata = {
-  title: "Impressum – Captn",
-  description: "Impressum und Anbieterkennzeichnung für Captn.",
+export const metadata: Metadata = {
+  title: "Impressum",
+  description: "Impressum und Anbieterkennzeichnung für Capt'n.",
+  alternates: { canonical: "/impressum" },
 };
 
 export default function ImpressumPage() {
   return (
-    <div className="min-h-screen bg-[var(--background)] px-4 py-12 sm:px-6">
-      <article className="mx-auto max-w-2xl">
-        <h1 className="text-2xl font-bold text-[var(--foreground)]">
-          Impressum
-        </h1>
-        <p className="mt-2 text-sm text-[var(--muted)]">
-          Angaben gemäß § 5 TMG / Anbieterkennzeichnung
-        </p>
+    <LegalPage>
+      <h1>Impressum</h1>
+      <p>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</p>
 
-        <section className="mt-8 space-y-6 text-[var(--foreground)]">
-          <div>
-            <h2 className="text-lg font-semibold">Verantwortlich für die Website</h2>
-            <p className="mt-2 text-[var(--muted)]">
-              Erhan Kesbic
-              <br />
-              Seckbacher Landstr. 74
-              <br />
-              60389 Frankfurt am Main
-            </p>
-          </div>
+      <h2>Anbieter</h2>
+      <p>
+        Erhan Kesbic
+        <br />
+        Seckbacher Landstraße 74
+        <br />
+        60389 Frankfurt am Main
+        <br />
+        Deutschland
+      </p>
 
-          <div>
-            <h2 className="text-lg font-semibold">Kontakt</h2>
-            <p className="mt-2 text-[var(--muted)]">
-              E-Mail:{" "}
-              <a
-                href="mailto:support@getcaptn.com"
-                className="text-[var(--accent)] underline"
-              >
-                support@getcaptn.com
-              </a>
-            </p>
-          </div>
-        </section>
+      <h2>Kontakt</h2>
+      <p>
+        E-Mail: <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+      </p>
 
-        <p className="mt-10">
-          <Link
-            href="/"
-            className="text-[var(--accent)] underline underline-offset-4"
-          >
-            ← Zurück zur Startseite
-          </Link>
-        </p>
-      </article>
-    </div>
+      <h2>Verantwortlich für den Inhalt</h2>
+      <p>Erhan Kesbic, Anschrift wie oben.</p>
+    </LegalPage>
   );
 }
