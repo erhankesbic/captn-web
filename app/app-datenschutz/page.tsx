@@ -89,9 +89,10 @@ export default function AppDatenschutzPage() {
             <strong>Benachrichtigungen</strong> – nur, wenn du sie in iOS erlaubst (Art. 6 Abs. 1 lit. a DSGVO).
           </li>
           <li>
-            <strong>App verbessern und Fehler finden</strong> – Auswertung der Nutzungsereignisse aus Abschnitt 2,
-            pseudonym über deine Nutzer-ID: berechtigtes Interesse an einer funktionierenden, verständlichen App (Art. 6
-            Abs. 1 lit. f DSGVO). Du kannst jederzeit per E-Mail widersprechen.
+            <strong>Nutzungsanalyse</strong> – Auswertung der Nutzungsereignisse aus Abschnitt 2, verknüpft mit deiner
+            Nutzer-ID, um die App zu verbessern und Fehler zu finden. Nur mit deiner Einwilligung (Art. 6 Abs. 1 lit. a
+            DSGVO, § 25 Abs. 1 TDDDG), die du im Onboarding oder in einer einmaligen Abfrage erteilst. Ohne Einwilligung
+            verlässt kein Ereignis dein Gerät. Widerruf jederzeit unter Profil › Einstellungen › Nutzungsanalyse.
           </li>
           <li>
             <strong>Passwort zurücksetzen</strong> – Versand des Codes per E-Mail: Vertragserfüllung.
@@ -117,7 +118,7 @@ export default function AppDatenschutzPage() {
           </li>
           <li>
             <strong>PostHog, Inc.</strong> (Server in der EU) – Auswertung der Nutzungsereignisse, verknüpft mit deiner
-            Nutzer-ID.
+            Nutzer-ID; nur mit deiner Einwilligung.
           </li>
           <li>
             <strong>Resend, Inc.</strong> (USA) – Versand der E-Mail zum Zurücksetzen des Passworts.
@@ -246,9 +247,10 @@ export default function AppDatenschutzPage() {
             <strong>Notifications</strong> – only if you allow them in iOS (Art. 6(1)(a) GDPR).
           </li>
           <li>
-            <strong>Improving the app and fixing bugs</strong> – analysis of the usage events listed in section 2,
-            pseudonymised via your user ID: legitimate interest (Art. 6(1)(f) GDPR). You can object at any time by
-            email.
+            <strong>Usage analytics</strong> – analysis of the usage events listed in section 2, linked to your user ID,
+            to improve the app and fix bugs. Only with your consent (Art. 6(1)(a) GDPR, Section 25(1) TDDDG), given during
+            onboarding or in a one-time prompt. Without consent no event leaves your device. Withdraw at any time under
+            Profile › Settings › Usage analytics.
           </li>
           <li>
             <strong>Password reset</strong> – sending the code by email: performance of contract.
@@ -271,7 +273,8 @@ export default function AppDatenschutzPage() {
             <strong>RevenueCat, Inc.</strong> (USA) – subscription management (user ID and Apple purchase information).
           </li>
           <li>
-            <strong>PostHog, Inc.</strong> (servers in the EU) – analysis of usage events linked to your user ID.
+            <strong>PostHog, Inc.</strong> (servers in the EU) – analysis of usage events linked to your user ID; only with
+            your consent.
           </li>
           <li>
             <strong>Resend, Inc.</strong> (USA) – sending password reset emails.
