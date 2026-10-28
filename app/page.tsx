@@ -192,13 +192,14 @@ export default function Home() {
       <main>
         {/* ── Hero ── */}
         <section className="grain relative overflow-hidden px-[var(--gutter)] pb-20 pt-28 md:px-8 md:pb-28 md:pt-36">
-          <div className="wrap grid items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
+          <div className="wrap grid items-center gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
             <div className="text-center lg:text-left">
               <Kicker>KI-Personal-Trainer für iPhone &amp; Apple Watch</Kicker>
-              <h1 className="display mt-5 text-[clamp(3rem,8vw,5.5rem)]">
-                Dein Coach.
-                <br />
-                <span className="text-[var(--accent)] [text-shadow:0_0_40px_rgba(40,232,196,0.35)]">Immer an Bord.</span>
+              <h1 className="display mt-5 text-[clamp(2.75rem,10.5vw,4.75rem)] lg:text-[clamp(3.5rem,6vw,4.75rem)]">
+                <span className="block whitespace-nowrap">Dein Coach.</span>
+                <span className="block whitespace-nowrap text-[var(--accent)] [text-shadow:0_0_32px_rgba(40,232,196,0.22)]">
+                  Immer an Bord.
+                </span>
               </h1>
               <p className="lead mx-auto mt-6 max-w-xl lg:mx-0">
                 Capt&apos;n plant dein Training nach Maß, erfasst deine Ernährung in Sekunden und passt beides an, wenn das
@@ -215,21 +216,29 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="relative mx-auto flex h-[560px] w-full max-w-[440px] justify-center lg:h-[620px]">
-              <div className="stage-light absolute inset-0" aria-hidden="true" />
+            {/* Drei Bereiche, ein Coach: Training links, Kommandozentrale vorn, Ernährung rechts */}
+            <div className="relative mx-auto flex w-full max-w-[520px] justify-center pt-4 sm:pt-10">
+              <div className="stage-light absolute inset-x-0 inset-y-[10%]" aria-hidden="true" />
+              <Phone
+                src="/screens/plan-neu.webp"
+                alt="Training: aktiver KI-Plan mit Wochenfortschritt"
+                width={215}
+                className="hero-side absolute left-0 top-24 z-0 -rotate-[7deg] max-sm:hidden"
+              />
               <Phone
                 src="/screens/ernaehrung-tag.webp"
                 alt="Ernährung: Kalorien und Makros des Tages"
-                width={230}
-                className="absolute left-0 top-16 -rotate-6 opacity-60 max-sm:hidden"
+                width={215}
+                className="hero-side absolute right-0 top-24 z-0 rotate-[7deg] max-sm:hidden"
               />
-              <Phone
-                src="/screens/workout.webp"
-                alt="Laufendes Workout: Satz mit Gewicht, Wiederholungen und RIR-Auswahl"
-                width={270}
-                priority
-                className="float relative z-10 sm:translate-x-12"
-              />
+              <div className="float relative z-10">
+                <Phone
+                  src="/screens/kommandozentrale.webp"
+                  alt="Kommandozentrale: Capt'n an Deck mit dem KI-Kommandodeck"
+                  width={260}
+                  priority
+                />
+              </div>
             </div>
           </div>
         </section>
